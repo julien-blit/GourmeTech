@@ -5,6 +5,7 @@
     <title>GourmeTech</title>
     <body>
         <header>
+            <div class="header">
             <nav>
                 <button class="menu-toggle" id="btn">Menu</button>
                 <ul class="nav-links" id="nav-links">
@@ -21,12 +22,14 @@
                     <li><button class="dark-toggle" id="dark-mode-toggle">🌙</button></li>
                 </ul>
             </nav>
-
+            </div>
+        </header>
+        <div class="general">
             <div class="search-container">
                 <input type="text" placeholder="Rechercher une recette..." class="search-input">
                 <button class="search-button">Rechercher</button>
             </div>
-
+            <div class="filter-container">
             <div class="filter-group">
                 <p>Catégorie :</p>
                 <label><input type="checkbox" name="category" value="entrée"> Entrée</label>
@@ -48,8 +51,8 @@
                 <label><input type="checkbox" name="difficulty" value="Intermediate"> Moyen</label>
                 <label><input type="checkbox" name="difficulty" value="Advanced"> Difficile</label>
             </div>
-
-        </header>
+            </div>
+             </div>
 
         <script src="script.js"></script>
     </body>
