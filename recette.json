@@ -1,0 +1,20 @@
+{
+    "image": "img/tarte-pommes.jpg",
+    "titre": "Tarte aux pommes",
+    "temps": "45 minutes",
+    "difficulte": "Facile",
+    "ingredients": [
+      "4 pommes",
+      "1 pâte feuilletée",
+      "50g de sucre",
+      "20g de beurre",
+      "1 sachet de sucre vanillé"
+    ],
+    "instructions": [
+      "Préchauffer le four à 180°C.",
+      "Éplucher et couper les pommes en fines tranches.",
+      "Étaler la pâte dans un moule et disposer les pommes.",
+      "Parsemer de sucre, sucre vanillé et de petits morceaux de beurre.",
+      "Cuire au four pendant 35 minutes jusqu’à ce que la tarte soit dorée."
+    ]
+  }
