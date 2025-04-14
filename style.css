@@ -1,0 +1,158 @@
+.dark-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Logo */
+.logo-title {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  background-color: orange;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.letter {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Titre */
+.title {
+  font-size: 24px;
+  color: orange;
+  margin: 0;
+  top: 0;
+  font-weight: bold;
+}
+nav {
+  background-color: white;
+  height: 80px;
+  position: sticky;
+  top: 0;
+}
+
+.menu-toggle {
+  display: none;
+  background-color: var(--index);
+  color: black;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 15px;
+  border-radius: 20%;
+  padding: 10px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  background-color: var(--index);
+  color: black;
+  height: 200px;
+  font-family: "Amarante", serif;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+}
+.nav-links li {
+  padding: 10px 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  margin-top: 65px;
+}
+
+.search-input {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  width: 300px;
+  max-width: 80%;
+}
+
+.search-button {
+  padding: 10px 15px;
+  background-color: orange;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: darkorange;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .nav-links a {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-family: "Amarante", serif;
+  }
+
+  .nav-links.show {
+    display: block;
+  }
+}
+/* Thème dark */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode nav {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .nav-links {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+  color: white;
+}
+
+body.dark-mode .logo {
+  background-color: #ff9800;
+}
