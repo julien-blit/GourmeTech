@@ -240,12 +240,10 @@ body.dark-mode .filter-group label {
   cursor: pointer;
 }
 
-/* Styles pour les checkboxes */
 body.dark-mode input[type="checkbox"] {
   accent-color: #ff9800;
 }
 
-/* Dark mode bouton "🌙" */
 body.dark-mode .dark-toggle {
   background-color: transparent;
   font-size: 20px;
