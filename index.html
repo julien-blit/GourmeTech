@@ -4,10 +4,9 @@
     <link rel="stylesheet" href="style.css">
     <title>GourmeTech</title>
     <body>
-       <header>
+       <header id="top">
   <div>
     <nav>
-     
       <div class="logo-title">
         <div class="logo">
           <span class="letter">G</span>
@@ -19,7 +18,7 @@
         <li><a href="#">Accueil</a></li>
         <li><a href="#">Ajouter une recette</a></li>
         <li><a href="#">Mes Favoris</a></li>
-        <li><a href="#">À Propos</a></li>
+        <li><a href="Propos.html">À Propos</a></li>
         <li><button class="dark-toggle" id="dark-mode-toggle">🌙</button></li>
       </ul>
     </nav>
@@ -37,7 +36,6 @@
                 <label><input type="checkbox" name="category" value="entrée"> Entrée</label>
                 <label><input type="checkbox" name="category" value="plat"> Plat</label>
                 <label><input type="checkbox" name="category" value="dessert"> Dessert</label>
-                <label><input type="checkbox" name="category" value="boisson"> Boisson</label>
             </div>
 
             <div class="filter-group">
@@ -110,8 +108,28 @@
   </div>
 </main>
         <script src="script.js"></script>
-          <footer  class="footer">
+          <footer>
+           <div class="footer-content">
+  <div class="aside">
+    <div class="footer-column">
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="#top">Accueil</a></li>
+        <li><a href="#">Ajouter une recette</a></li>
+        <li><a href="#">Mes favoris</a></li>
+        <li><a href="#">À propos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h2>À propos de GourmeTech</h2>
+      <p>GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d'un projet pédagogique.</p>
+    </div>
+  </div>
+</div>
+        <div class="footer">
      <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+     </div>
     </footer>
     </body>
 </html>
