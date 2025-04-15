@@ -1,0 +1,30 @@
+[
+  {
+    "image": "images/ratatouille.jpg",
+    "titre": "Ratatouille provençale",
+    "temps": "1h15",
+    "difficulte": "Facile",
+    "ingredients": [
+      "2 aubergines",
+      "2 courgettes",
+      "2 poivrons (rouge et vert)",
+      "4 tomates",
+      "2 oignons",
+      "2 gousses d’ail",
+      "Thym, laurier",
+      "Huile d’olive",
+      "Sel, poivre"
+    ],
+    "instructions": [
+      "Laver tous les légumes.",
+      "Couper les aubergines, courgettes, poivrons et tomates en dés.",
+      "Émincer les oignons et l’ail.",
+      "Dans une grande poêle ou cocotte, faire revenir les oignons dans de l’huile d’olive.",
+      "Ajouter les poivrons et faire revenir quelques minutes.",
+      "Ajouter les aubergines, puis les courgettes. Laisser cuire 10 minutes.",
+      "Ajouter enfin les tomates, l’ail, le thym et le laurier.",
+      "Saler, poivrer, couvrir et laisser mijoter à feu doux pendant 45 minutes.",
+      "Remuer de temps en temps. Servir chaud ou froid."
+    ]
+  }
+]

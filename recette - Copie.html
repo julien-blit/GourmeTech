@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GourmeTech</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">G</div>
+    <h1>GourmeTech</h1>
+    <nav class="nav">
+      <a href="#" class="active">Accueil</a>
+      <a href="#">Ajouter une recette</a>
+      <a href="#">Mes favoris</a>
+      <a href="#">À propos</a>
+    </nav>
+  </header>
+
+  <section class="search-section">
+    <input type="text" placeholder="Rechercher une recette...">
+    <button>Rechercher</button>
+    <div class="filters">
+      <div>
+        <strong>Catégorie</strong><br>
+        <label><input type="checkbox"> Entrée</label>
+        <label><input type="checkbox"> Plat</label>
+        <label><input type="checkbox"> Dessert</label>
+      </div>
+      <div>
+        <strong>Temps de préparation</strong><br>
+        <label><input type="radio" name="temps"> Rapide (< 30 min)</label>
+        <label><input type="radio" name="temps"> Moyen (30-60 min)</label>
+        <label><input type="radio" name="temps"> Long (> 60 min)</label>
+      </div>
+      <div>
+        <strong>Difficulté</strong><br>
+        <label><input type="radio" name="diff"> Facile</label>
+        <label><input type="radio" name="diff"> Moyenne</label>
+        <label><input type="radio" name="diff"> Difficile</label>
+      </div>
+    </div>
+  </section>
+
+  <section class="recipes">
+    <div class="recipe">
+      <img src="https://via.placeholder.com/150" alt="Tarte aux pommes">
+      <h2>Tarte aux pommes</h2>
+      <div class="tags">
+        <span class="tag orange">Dessert</span>
+        <span class="tag green">40 min</span>
+        <span class="tag blue">Facile</span>
+      </div>
+      <button>Voir la recette</button>
+    </div>
+    <div class="recipe">
+      <img src="https://via.placeholder.com/150" alt="Ratatouille provençale">
+      <h2>Ratatouille provençale</h2>
+      <div class="tags">
+        <span class="tag green">Plat</span>
+        <span class="tag blue">60 min</span>
+        <span class="tag turquoise">Moyen</span>
+      </div>
+      <button>Voir la recette</button>
+    </div>
+    <div class="recipe">
+      <img src="https://via.placeholder.com/150" alt="Velouté de potiron">
+      <h2>Velouté de potiron</h2>
+      <div class="tags">
+        <span class="tag green">Entrée</span>
+        <span class="tag orange">30 min</span>
+        <span class="tag blue">Facile</span>
+      </div>
+      <button>Voir la recette</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li>Accueil</li>
+        <li>Ajouter une recette</li>
+        <li>Mes favoris</li>
+        <li>À propos</li>
+      </ul>
+    </div>
+    <div>
+      <h4>À propos de GourmeTech</h4>
+      <p>GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d’un projet pédagogique.</p>
+    </div>
+    <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+  </footer>
+</body>
+</html>
+
+<!-- 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuV = document.getElementById('menuV');
+  const nav = document.getElementById('nav');
+
+  menuV.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+});  
+</script>
+-->

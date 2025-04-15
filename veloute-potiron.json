@@ -1,0 +1,27 @@
+[
+  {
+    "image": "images/veloute-potiron.jpg",
+    "titre": "Velouté de potiron",
+    "temps": "40 minutes",
+    "difficulte": "Facile",
+    "ingredients": [
+      "1 kg de potiron",
+      "2 pommes de terre",
+      "1 oignon",
+      "1 cube de bouillon (légumes ou volaille)",
+      "20 cl de crème fraîche",
+      "Beurre",
+      "Sel, poivre"
+    ],
+    "instructions": [
+      "Éplucher et couper le potiron et les pommes de terre en morceaux.",
+      "Émincer l’oignon.",
+      "Faire revenir l’oignon dans du beurre dans une grande casserole.",
+      "Ajouter les morceaux de potiron et de pommes de terre.",
+      "Couvrir d’eau, ajouter le cube de bouillon.",
+      "Saler légèrement, poivrer, couvrir et laisser cuire 25 minutes à feu moyen.",
+      "Mixer le tout jusqu’à obtention d’un velouté.",
+      "Ajouter la crème fraîche, bien mélanger et servir chaud."
+    ]
+  }
+]

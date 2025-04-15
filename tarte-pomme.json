@@ -1,5 +1,6 @@
-{
-    "image": "img/tarte-pommes.jpg",
+[
+  {
+    "image": "images/tarte-pommes.jpg",
     "titre": "Tarte aux pommes",
     "temps": "45 minutes",
     "difficulte": "Facile",
@@ -18,3 +19,4 @@
       "Cuire au four pendant 35 minutes jusqu’à ce que la tarte soit dorée."
     ]
   }
+]
