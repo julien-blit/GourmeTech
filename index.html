@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>GourmeTech</title>
+    <body>
+        <header>
+           <div>
+            <nav>
+                <button class="menu-toggle" id="btn">Menu</button>
+                <ul class="nav-links" id="nav-links">
+                    <div class="logo-title">
+                        <div class="logo">
+                            <span class="letter">G</span>
+                        </div>
+                        <h1 class="title">GourmeTech</h1>
+                    </div>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Ajouter une recette</a></li>
+                    <li><a href="#">Mes Favoris</a></li>
+                    <li><a href="#">À Propos</a></li>
+                    <li><button class="dark-toggle" id="dark-mode-toggle">🌙</button></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+        <section class="search">
+        <div class="general">
+            <div class="search-container">
+                <input type="text" placeholder="Rechercher une recette..." class="search-input">
+                <button class="search-button">Rechercher</button>
+            </div>
+            <div class="filter-container">
+            <div class="filter-group">
+                <p>Catégorie :</p>
+                <label><input type="checkbox" name="category" value="entrée"> Entrée</label>
+                <label><input type="checkbox" name="category" value="plat"> Plat</label>
+                <label><input type="checkbox" name="category" value="dessert"> Dessert</label>
+                <label><input type="checkbox" name="category" value="boisson"> Boisson</label>
+            </div>
+
+            <div class="filter-group">
+                <p>Temps de préparation :</p>
+                <label><input type="checkbox" name="time" value="-15"> -15 min</label>
+                <label><input type="checkbox" name="time" value="15-30"> 15–30 min</label>
+                <label><input type="checkbox" name="time" value="+30"> +30 min</label>
+            </div>
+
+            <div class="filter-group">
+                <p>Difficulté:</p>
+                <label><input type="checkbox" name="difficulty" value="Easy"> Facile</label>
+                <label><input type="checkbox" name="difficulty" value="Intermediate"> Moyen</label>
+                <label><input type="checkbox" name="difficulty" value="Advanced"> Difficile</label>
+            </div>
+            </div>
+             </div>
+</section>
+
+<main class="main-content">
+  <div class="card">
+    <div class="img-container">
+      <span class="coeur">🤍</span>
+      <img class="card-img" src="img/tartau pomme.png" alt="Recette 1">
+    </div>
+    <h2 class="recipe-title">Recette 1</h2>
+    <p class="recipe-description">Description de la recette 1.</p>
+    <button class="favorite-button">Voir la recette</button>
+  </div>
+
+  <div class="card">
+    <div class="img-container">
+      <span class="coeur">🤍</span>
+      <img class="card-img" src="img/tartau pomme.png" alt="Recette 2">
+    </div>
+    <h2 class="recipe-title">Recette 2</h2>
+    <p class="recipe-description">Description de la recette 2.</p>
+    <button class="favorite-button">Voir la recette</button>
+  </div>
+
+  <div class="card">
+    <div class="img-container">
+      <span class="coeur">🤍</span>
+      <img class="card-img" src="img/tartau pomme.png" alt="Recette 3">
+    </div>
+    <h2 class="recipe-title">Recette 3</h2>
+    <p class="recipe-description">Description de la recette 3.</p>
+    <button class="favorite-button">Voir la recette</button>
+  </div>
+</main>
+        <script src="script.js"></script>
+          <footer  class="footer">
+     <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+    </footer>
+    </body>
+</html>
