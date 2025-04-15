@@ -1,9 +1,12 @@
 [
   {
+    "id": "1",
     "image": "images/tarte-pommes.jpg",
     "titre": "Tarte aux pommes",
+    "categorie": "Dessert",
     "temps": "45 minutes",
     "difficulte": "Facile",
+    "personnes": "4",
     "ingredients": [
       "4 pommes",
       "1 pâte feuilletée",

@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GourmeTech</title>
+  <meta charset="UTF-8" />
+  <title>Recette</title>
   <link rel="stylesheet" href="style1.css">
 </head>
 <body>
+  <main>
+    <h1 id="recette-titre">Titre de la recette</h1>
 
-  <header class="logo-title">
-    <h1 class="title">Recettes GourmeTech <button id="print-button">🖨️ Imprimer la recette</button> </h1>    
-    
-  </header>
+    <section class="recette-details">
+      <img src="chemin/vers/image.jpg" alt="Image de la recette" id="recette-image">
+      <p id="recette-categorie">Catégorie : </p>
+      <p id="recette-temps">Temps : </p>
+      <p id="recette-difficulte">Difficulté : </p>
+      <p id="recette-personnes">Pour x personnes</p>
+      <button class="ajouter-favori">⭐ Ajouter aux favoris</button>
+    </section>
 
-  <section class="selection"> 
+    <section class="ingredients">
+      <h2>Ingrédients</h2>
+      <ul id="liste-ingredients"></ul>
+    </section>
 
-    <label for="recipe-select">Choisissez une recette :</label>
-    <select id="recipe-select">
-      <option value="">-- Sélectionnez une recette --</option>
-      <option value="tarte-pomme.json">Tarte aux pommes</option>
-      <option value="veloute-potiron.json">Velouté de potiron</option>
-      <option value="ratatouille.json">Ratatouille provençale</option>
-    </select>
-  </section>
+    <section class="instructions">
+      <h2>Préparation</h2>
+      <ol id="liste-instructions"></ol>
+    </section>
 
-  <hr>
+    <hr>
+    <h1>Mes recettes favorites</h1>
+    <div id="liste-favoris"></div>
+    <p id="message-vide" style="display: none;">Aucun favori pour l’instant.</p>
 
-  <main class="recipe-detail" id="recipe-container">
-    <!-- Recette chargée dynamiquement -->
+    <section class="suggestions">
+      <h2>Autres Recettes</h2>
+      <div id="recettes-similaires"></div>
+    </section>
   </main>
 
-  <hr>
-
-  <footer>
-    <!-- Footer optionnel ici -->
-  </footer>
-
-  <script src="recette1.js"></script>
+  <script src="favoris.js"></script>
+  <script src="recette.js"></script>
 </body>
 </html>

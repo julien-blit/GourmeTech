@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Recettes</title>
+  <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+  <main>
+    <div class="row">
+      <!-- Recettes chargées dynamiquement -->
+    </div>
+
+    <hr>
+    <div style="text-align: left; margin-bottom: 20px;">
+      <a href="ajouter-recette.html" class="btn-ajouter-recette">➕ Ajouter une recette</a>
+    </div>
+
+    <h1>Mes recettes favorites</h1>
+    <div id="liste-favoris"></div>
+    <p id="message-vide" style="display: none;">Aucun favori pour l’instant.</p>
+
+    <section class="suggestions">
+      <h2>Autres Recettes</h2>
+      <div id="recettes-similaires"></div>
+    </section>
+    <a href="favoris.html" class="btn-favoris">❤️ Voir mes favoris</a>
+  </main>
+
+  <script src="favoris.js"></script>
+  <script src="recette.js"></script>
+</body>
+</html>
