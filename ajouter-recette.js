@@ -25,6 +25,8 @@ function ajouterIngredient() {
     const recette = {
       id: Date.now(), // Génère un ID unique
       titre: form.titre.value,
+      categorie: form.categorie.value || "Plat",
+      personnes: parseInt(form.personnes.value) || 4,
       categorie: form.categorie.value,
       temps: form.temps.value,
       difficulte: form.difficulte.value,

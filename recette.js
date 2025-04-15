@@ -89,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
         bouton.dataset.id = recette.id;
         bouton.dataset.titre = recette.titre;
         bouton.dataset.image = recette.image;
-        bouton.addEventListener("click", ajouterOuRetirerFavori);
+        initialiserFavoris(); // permet d'éviter les duplications
+        // bouton.addEventListener("click", ajouterOuRetirerFavori);
       }
     }
   }

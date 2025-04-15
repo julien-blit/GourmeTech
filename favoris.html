@@ -21,49 +21,7 @@
     </div>
   </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      afficherFavoris();
-
-      function afficherFavoris() {
-        const favoris = JSON.parse(localStorage.getItem("favoris")) || [];
-        const container = document.getElementById("liste-favoris");
-        const messageVide = document.getElementById("message-vide");
-
-        container.innerHTML = "";
-
-        if (favoris.length === 0) {
-          messageVide.style.display = "block";
-          return;
-        } else {
-          messageVide.style.display = "none";
-        }
-
-        favoris.forEach(recette => {
-          const div = document.createElement("div");
-          div.className = "favori";
-
-          div.innerHTML = `
-            <h3><a href="recette.html?id=${recette.titre}">${recette.titre}</a></h3>
-            <img src="${recette.image}" alt="${recette.titre}" style="width: 150px;">
-            <button class="retirer-favori">❌ Retirer</button>
-          `;
-
-          div.querySelector(".retirer-favori").addEventListener("click", () => {
-            retirerFavori(recette.titre);
-          });
-
-          container.appendChild(div);
-        });
-      }
-
-      function retirerFavori(titre) {
-        let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
-        favoris = favoris.filter(r => r.titre !== titre);
-        localStorage.setItem("favoris", JSON.stringify(favoris));
-        afficherFavoris();
-      }
-    });
-  </script>
+  
+  <script src="favoris.js"></script>
 </body>
 </html>
