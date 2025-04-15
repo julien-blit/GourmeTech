@@ -14,11 +14,7 @@
         </div>
         <h1 class="title">GourmeTech</h1>
       </div>
-
-      
        <button class="menu-toggle" id="btn">☰</button>
-
-      
       <ul class="nav-links" id="nav-links">
         <li><a href="#">Accueil</a></li>
         <li><a href="#">Ajouter une recette</a></li>
@@ -59,6 +55,9 @@
             </div>
             </div>
              </div>
+             <div class="no-result" style="display: none; text-align: center; margin-top: 2rem;">
+  <p>Aucune recette trouvée 😢</p>
+</div>
 </section>
 
 <main class="main-content">
@@ -68,8 +67,14 @@
       <img class="card-img" src="images/tarte-pommes.jpg" alt="Tarte au Pommes">
     </div>
     <h2 class="recipe-title">Tarte aux pommes</h2>
-    <p class="recipe-description">Description de la recette 1.</p>
-    <button class="favorite-button">Voir la recette</button>
+     <div class="card-content">
+    <p class="type">Dessert</p>
+    <p class="duration">60 min </p>
+    <p class="difficulty">Facile</p>
+    </div>
+    <div class="container">
+    <button class="btn">Voir la recette</button>
+    </div>
   </div>
 
   <div class="card">
@@ -78,8 +83,14 @@
       <img class="card-img" src="images/ratatouille.jpg" alt="ratatouille">
     </div>
     <h2 class="recipe-title">ratatouille Provençale</h2>
-    <p class="recipe-description">Description de la recette 2.</p>
-    <button class="favorite-button">Voir la recette</button>
+      <div class="card-content">
+    <p class="type">Plat</p>
+    <p class="duration">60 min </p>
+    <p class="difficulty">Moyen</p>
+    </div>
+    <div class="container">
+     <button class="btn">Voir la recette</button>
+     </div>
   </div>
 
   <div class="card">
@@ -88,8 +99,14 @@
       <img class="card-img" src="images/veloute-potiron.jpg" alt="veloute-potiron">
     </div>
     <h2 class="recipe-title">veloute-potiron</h2>
-    <p class="recipe-description">Description de la recette 3.</p>
-    <button class="favorite-button">Voir la recette</button>
+       <div class="card-content">
+    <p class="type">Entrée</p>
+    <p class="duration">30 min </p>
+    <p class="difficulty">Facile</p>
+    </div>
+    <div class="container">
+    <button class="btn">Voir la recette</button>
+    </div>
   </div>
 </main>
         <script src="script.js"></script>
