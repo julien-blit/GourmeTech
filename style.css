@@ -5,12 +5,19 @@
   cursor: pointer;
   margin-left: 10px;
 }
-
-/* Logo */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  flex-wrap: wrap;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+/* ----- LOGO + TITRE ----- */
 .logo-title {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
 }
 
 .logo {
@@ -21,7 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .letter {
@@ -30,12 +37,10 @@
   font-weight: bold;
 }
 
-/* Titre */
 .title {
   font-size: 30px;
   color: orange;
   margin: 0;
-  top: 0;
   font-weight: bold;
 }
 
@@ -54,33 +59,33 @@
 }
 
 
+/* ----- NAV LINKS ----- */
 .nav-links {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  gap: 20px;
   list-style: none;
-  background-color: white;
-  color: black;
-  height: 200px;
-  font-family: "Amarante", serif;
-  font-size: 20px;
-  margin: 0;  
-  border: 1px solid #ddd;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-
+  margin: 0;
+  padding: 0;
 }
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
 
 .nav-links a {
   text-decoration: none;
   color: black;
-  font-size: 25px;
+  font-size: 30px;
+  font-family: "Amarante", serif;
 }
-.nav-links a:hover {
-  color: orange;
-  font-weight: bold;
-  transition: all 0.1s ease-in-out;
-  border: 1px solid orange;
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-top: 105px;
+  margin-left: 10px;
+  gap: 10px; 
 }
 
 .search-input {
@@ -89,20 +94,16 @@
   width: 90%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-top: 105px;
-  margin-left: 10px;
 }
 
 .search-button {
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: orange;
   color: white;
-  border: none;git ;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 105px;
 }
-
 .filter-group {
   display: flex;
   flex-direction: column;
@@ -159,6 +160,8 @@ p {
 
 .card-img {
   width: 100%;
+  height: 200px; /* ou la hauteur que tu veux */
+  object-fit: cover;
   border-radius: 15px;
   display: block;
 }
@@ -189,30 +192,32 @@ p {
   padding: 1rem;
 }
                                                                         /*! Responsive Design */ 
+
 @media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-    width: 100%;
-    text-align: center;
-    flex-direction: column;
-  }
+    .nav-links {
+        display: none;            
+        flex-direction: column;   
+        justify-content: center;  
+        align-items: center;     
+        width: 100%;             
+    }
 
-  .nav-links a {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
+   
+    .nav-links.show {
+        display: flex;           
+    }
 
-  .menu-toggle {
-    display: block;
-    font-family: "Amarante", serif;
-  }
+    .nav-links a {
+        font-size: 30px;          
+        margin-bottom: 20px;      
+    }
 
-  .nav-links.show {
-    display: block;
-  }
+    .menu-toggle {
+        display: block;           
+    }
 }
-                                                                            /*! DARCK MODE */
 
+                                                                            /*! DARCK MODE */
 
 /*!  Barre de recherche  dark mode*/
 body.dark-mode .search-container {
@@ -287,29 +292,28 @@ body.dark-mode nav {
   border-radius: 15px;
 } 
 body.dark-mode .nav-links {
-  background-color:#1e1e1e;
-  color: white;
-  height: 200px;
+  background-color: #2a2a2a; 
+  color: #f5f5f5;
+  padding: 15px 25px; 
   font-family: "Amarante", serif;
   font-size: 20px;
-  margin: 0;  
-  border: 1px solid #444;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin: 0;
   border-radius: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .nav-links a {
-  color: white;
-  font-size: 25px;
-
+  color: #f5f5f5;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 15px;
+  transition: background-color 0.2s ease;
 }
 
 body.dark-mode .nav-links a:hover {
-  color: #ff9800;
-  font-weight: bold;
-  transition: all 0.1s ease-in-out;
-  border: 1px solid #ff9800;
+  background-color: #ff9800; /
 }
+
 body.dark-mode .logo-title {
   background-color: #1e1e1e;
   color: white;
@@ -332,3 +336,15 @@ body.dark-mode .footer {
   border-top: 1px solid #444;
   border-radius: 15px;
 }
+
+body.dark-mode .card{
+  background-color: #333;
+  color: white;
+
+}
+
+body.dark-mode .main-content{
+  background-color: #1e1e1e;
+}
+
+

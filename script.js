@@ -9,6 +9,7 @@ const toggleBtn = document.getElementById('dark-mode-toggle');
 
 
 //! navbar //
+
   const menuBtn = document.getElementById('btn');
 const liens = document.getElementById('nav-links');
 
