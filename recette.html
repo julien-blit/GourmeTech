@@ -1,20 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>GourmeTech</title>
-    
-        .....
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GourmeTech</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
 <body>
-        <hr>        
-        <main class="recipe-detail" id="recipe-container">
-            <!-- Contenu chargé dynamiquement via JSON -->
-          </main>
-        <hr>
-        <script src="recette.js"></script>
 
-    </body>
-    <footer class="footer">
-     <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
-    </footer>
+  <header class="logo-title">
+    <h1 class="title">Recettes GourmeTech <button id="print-button">🖨️ Imprimer la recette</button> </h1>    
+    
+  </header>
+
+  <section class="selection"> 
+
+    <label for="recipe-select">Choisissez une recette :</label>
+    <select id="recipe-select">
+      <option value="">-- Sélectionnez une recette --</option>
+      <option value="tarte-pomme.json">Tarte aux pommes</option>
+      <option value="veloute-potiron.json">Velouté de potiron</option>
+      <option value="ratatouille.json">Ratatouille provençale</option>
+    </select>
+  </section>
+
+  <hr>
+
+  <main class="recipe-detail" id="recipe-container">
+    <!-- Recette chargée dynamiquement -->
+  </main>
+
+  <hr>
+
+  <footer>
+    <!-- Footer optionnel ici -->
+  </footer>
+
+  <script src="recette1.js"></script>
+</body>
 </html>
