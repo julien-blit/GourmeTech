@@ -3,41 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <title>Ajouter une recette</title>
-  <link rel="stylesheet" href="style1.css" />
+  <link rel="stylesheet" href="styles1.css">
 </head>
+
 <body>
   <main>
     <h1>Ajouter une nouvelle recette</h1>
     <form id="form-recette">
-      <label>Titre : <input type="text" name="titre" required></label><br>
-      <label>Catégorie : <input type="text" name="categorie" required></label><br>
-      <label>Temps : <input type="text" name="temps" placeholder="ex : 30 min" required></label><br>
-      <label>Difficulté :
-        <select name="difficulte" required>
+      <label>Titre: <input type="text" name="titre" required></label>
+      <label>Temps: <input type="text" name="temps" placeholder="ex: 30 min" required></label>
+      <label>Difficulté: 
+          <select name="difficulte" required>
           <option value="Facile">Facile</option>
           <option value="Moyenne">Moyenne</option>
           <option value="Difficile">Difficile</option>
-        </select>
-      </label><br>
-      <label>Nombre de personnes : <input type="number" name="personnes" required></label><br>
-      <label>URL de l'image : <input type="url" name="image" required></label><br>
+        </select> 
+      </label>     
+      <label>URL de l'image: <input type="url" name="image" required></label> 
+      <label>Ingrédients:
+      <textarea id="ingredient" name="ingredient" rows="10" cols="33" required>        
+      </textarea></label> 
+      <label for="instruction">Instructions:
+      <textarea id="instruction" name="instruction" rows="10" cols="33" required>        
+      </textarea></label>
 
-      <h3>Ingrédients</h3>
-      <div id="ingredients">
-        <input type="text" name="ingredient" placeholder="ex : 500g de poulet" required>
-      </div>
-      <button type="button" onclick="ajouterIngredient()">+ Ajouter un ingrédient</button><br>
-
-      <h3>Étapes</h3>
-      <div id="etapes">
-        <input type="text" name="etape" placeholder="ex : Faire chauffer la poêle" required>
-      </div>
-      <button type="button" onclick="ajouterEtape()">+ Ajouter une étape</button><br><br>
-
-      <button type="submit">📤 Enregistrer la recette</button>
+      <button type="submit" class="buttonrecette"> Enregistrer la recette</button>
     </form>
+    <hr>
+    <h2>Recettes enregistrées 🧾</h2>
+    <div id="liste-recettes"></div>
   </main>
 
   <script src="ajouter-recette.js"></script>
 </body>
+<!-- 
+ <div id="ingredients">
+  <input type="text" name="ingredient" placeholder="ex : 500g de poulet" required>
+  <button type="button" onclick="ajouterIngredient()"> + Ajouter un ingrédient</button> 
+</div>
+ <div id="instructions">
+  <input type="text" name="instruction" placeholder="ex : Faire chauffer la poêle" required>
+</div>
+<button type="button" onclick="ajouterInstruction()">+ Ajouter une instruction</button>     
+      -->
 </html>
+

@@ -1,42 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  initialiserFavoris();
+  afficherFavoris();
 });
 
-function initialiserFavoris() {
-  const boutons = document.querySelectorAll(".ajouter-favori");
-  boutons.forEach(btn =>
-    btn.addEventListener("click", ajouterOuRetirerFavori)
-  );
-  afficherFavoris();
-}
-
 function getFavoris() {
-  return JSON.parse(localStorage.getItem("favoris")) || [];
+  return JSON.parse(localStorage.getItem("recettesFavoris")) || [];
 }
 
 function setFavoris(favoris) {
-  localStorage.setItem("favoris", JSON.stringify(favoris));
-}
-
-function ajouterOuRetirerFavori(e) {
-  const btn = e.currentTarget;
-  const recette = {
-    id: btn.dataset.id,
-    titre: btn.dataset.titre,
-    image: btn.dataset.image
-  };
-
-  let favoris = getFavoris();
-  const index = favoris.findIndex(r => r.id === recette.id);
-
-  if (index === -1) {
-    favoris.push(recette);
-  } else {
-    favoris.splice(index, 1);
-  }
-
-  setFavoris(favoris);
-  afficherFavoris();
+  localStorage.setItem("recettesFavoris", JSON.stringify(favoris));
 }
 
 function afficherFavoris() {
@@ -62,15 +33,18 @@ function afficherFavoris() {
       <img src="${image}" alt="${titre}" style="width: 150px;">
       <button class="retirer-favori">❌ Retirer</button>
     `;
+
+    // Supprimer ce favori au clic
     div.querySelector(".retirer-favori").addEventListener("click", () => {
       retirerFavori(id);
     });
+
     container.appendChild(div);
   });
 }
 
 function retirerFavori(id) {
-  const favoris = getFavoris().filter(r => r.id !== id);
-  setFavoris(favoris);
+  const nouveauxFavoris = getFavoris().filter(r => r.id !== id);
+  setFavoris(nouveauxFavoris);
   afficherFavoris();
 }
