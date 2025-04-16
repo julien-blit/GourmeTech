@@ -1,4 +1,3 @@
- 
 // ! Mode Dark //
 
 let theme = localStorage.getItem("theme");
@@ -31,16 +30,20 @@ menuBtn.addEventListener('click', function() {
 });
 
 
-//! like //
+//! accordeon //
 
-const coeurs = document.querySelectorAll(".coeur");
+ const items = document.querySelectorAll('.accordion-item');
 
-coeurs.forEach((coeur) => {
-  coeur.addEventListener("click", () => {
-    coeur.classList.toggle("active");
-    coeur.textContent = coeur.classList.contains("active") ? "❤️" : "🤍";
+items.forEach(item => {
+  const header = item.querySelector('.accordion-header');
+
+  header.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+
+    items.forEach(i => i.classList.remove('active'));
+
+    if (!isActive) {
+      item.classList.add('active');
+    }
   });
 });
-
-//! search //
-
