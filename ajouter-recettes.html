@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles1.css">
+    <title>GourmeTech</title>
+    <body>
+        <header>
+           <div>
+            <nav>
+                <button class="menu-toggle" id="btn">Menu</button>
+                <ul class="nav-links" id="nav-links">
+                    <div class="logo-title">
+                        <div class="logo">
+                            <span class="letter">G</span>
+                        </div>
+                        <h1 class="title">GourmeTech</h1>
+                    </div>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+                    <li><a href="favoris.html">Mes Favoris</a></li>
+                    <li><a href="#">À Propos</a></li>
+                    <li><button class="dark-toggle" id="dark-mode-toggle">🌙</button></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+        <section class="search">
+        <div class="general">
+            <div class="search-container">
+                <input type="text" placeholder="Rechercher une recette..." class="search-input">
+                <button class="search-button">Rechercher</button>
+            </div>
+            <div class="filter-container">
+            <div class="filter-group">
+                <p>Catégorie :</p>
+                <label><input type="checkbox" name="category" value="entrée"> Entrée</label>
+                <label><input type="checkbox" name="category" value="plat"> Plat</label>
+                <label><input type="checkbox" name="category" value="dessert"> Dessert</label>
+                <label><input type="checkbox" name="category" value="boisson"> Boisson</label>
+            </div>
+
+            <div class="filter-group">
+                <p>Temps de préparation :</p>
+                <label><input type="checkbox" name="time" value="-15"> -15 min</label>
+                <label><input type="checkbox" name="time" value="15-30"> 15–30 min</label>
+                <label><input type="checkbox" name="time" value="+30"> +30 min</label>
+            </div>
+
+            <div class="filter-group">
+                <p>Difficulté:</p>
+                <label><input type="checkbox" name="difficulty" value="Easy"> Facile</label>
+                <label><input type="checkbox" name="difficulty" value="Intermediate"> Moyen</label>
+                <label><input type="checkbox" name="difficulty" value="Advanced"> Difficile</label>
+            </div>
+            </div>
+             </div>
+</section>
+
+<main>
+  <h1>Ajouter une nouvelle recette</h1>
+  <form id="form-recette" enctype="multipart/form-data">
+    <label>Titre: <input type="text" name="titre" required></label>
+    <label>Temps: <input type="text" name="temps" required></label>
+    <label>Difficulté: 
+      <select name="difficulte" required>
+        <option value="Facile">Facile</option>
+        <option value="Moyenne">Moyenne</option>
+        <option value="Difficile">Difficile</option>
+      </select>
+    </label>
+    <label>Image : <input type="file" name="image" accept="image/*" required></label>
+    <label>Ingrédients:
+      <textarea name="ingredient" required></textarea>
+    </label>
+    <label>Instructions:
+      <textarea name="instruction" required></textarea>
+    </label>
+    <button type="submit">Enregistrer la recette</button>
+  </form>  
+</main>
+
+<hr>
+  <button onclick="filtrer('toutes')">📋 Toutes les recettes</button>
+  <button onclick="filtrer('favoris')">❤️ Favoris</button>
+
+  <!-- Détails de la recette affichée -->
+<div id="fiche-recette" class="fiche-recette">
+  <h1 id="recette-titre">Titre de la recette</h1>
+  <div class="recette-header">
+    <img id="recette-image" src="" alt="Image recette" class="recette-img" />
+    <div class="infos-recette">
+      <p id="recette-categorie"></p>
+      <p id="recette-temps"></p>
+      <p id="recette-difficulte"></p>
+    </div>
+  </div>
+  <section>
+    <h2>Ingrédients</h2>
+    <ul id="liste-ingredients"></ul>
+  </section>
+  <section>
+    <h2>Étapes</h2>
+    <ol id="liste-instructions"></ol>
+  </section>
+</div>
+
+  <h2>Recettes enregistrées</h2>
+  <div id="liste-recettes"></div>
+
+
+      <script src="script.js"></script>
+      <script src="ajouter-recette.js"></script>   
+      
+      <footer  class="footer">
+     <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+    </footer>
+    </body>
+</html>
