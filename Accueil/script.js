@@ -33,8 +33,6 @@ menuBtn.addEventListener('click', function() {
 
 
 //! Like //
-
-
 const coeurs = document.querySelectorAll(".coeur");
 
 // Récupérer les favoris existants une fois pour tous
@@ -54,6 +52,9 @@ coeurs.forEach((coeur) => {
     coeur.textContent = "🤍";
   }
 });
+
+
+
 
 coeurs.forEach((coeur) => {
   coeur.addEventListener("click", () => {

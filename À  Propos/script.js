@@ -60,42 +60,42 @@ for (let i = 0; i < items.length; i++) {
 
 
 
-//! Modale
+// //! Modale
 
 
-let open = document.querySelector(".btn");
-let close = document.getElementById("btnX");
-let close1 = document.getElementById("btnY");
-let modale = document.querySelector(".modale");
-let info = document.querySelector(".modale1");
-let form = document.querySelector(".custom-form");
+// let open = document.querySelector(".btn");
+// let close = document.getElementById("btnX");
+// let close1 = document.getElementById("btnY");
+// let modale = document.querySelector(".modale");
+// let info = document.querySelector(".modale1");
+// let form = document.querySelector(".custom-form");
 
-open.addEventListener("click", function(event) {
-    event.preventDefault();
+// open.addEventListener("click", function(event) {
+//     event.preventDefault();
 
-    let inputs = form.querySelectorAll("input, textarea");
-    let isFormFilled = false;
+//     let inputs = form.querySelectorAll("input, textarea");
+//     let isFormFilled = false;
 
-    inputs.forEach(function(input) {
-        if (input.value.trim() !== "") {
-            isFormFilled = true;
-        }
-    });
+//     inputs.forEach(function(input) {
+//         if (input.value.trim() !== "") {
+//             isFormFilled = true;
+//         }
+//     });
 
-    if (isFormFilled) {
-        modale.style.display = "block";
-    } else {
-      info.style.display="block"
-    }
+//     if (isFormFilled) {
+//         modale.style.display = "block";
+//     } else {
+//       info.style.display="block"
+//     }
     
-});
+// });
 
-close.addEventListener("click", function() {
-  modale.style.display = "none";
-  form.reset();
-});
+// close.addEventListener("click", function() {
+//   modale.style.display = "none";
+//   form.reset();
+// });
 
-close1.addEventListener("click", function() {
-   info.style.display = "none";
-});
+// close1.addEventListener("click", function() {
+//    info.style.display = "none";
+// });
 
