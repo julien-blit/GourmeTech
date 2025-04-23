@@ -1,3 +1,13 @@
+:root {
+    --first-color: #FFA500;
+    --dark-mode: #444;
+    --dark-body: #1e1e1e;
+    --second-color: #FFFFFF;
+    --fond-gris: #ddd;
+    --font: "Open Sans",
+        sans-serif;
+}
+
 *,
 ::before,
 ::after {
@@ -22,7 +32,7 @@
 .logo {
     width: 50px;
     height: 50px;
-    background-color: orange;
+    background-color: var(--first-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -32,13 +42,14 @@
 
 .letter {
     font-size: 30px;
-    color: white;
+    color: var(--second-color);
     font-weight: bold;
 }
 
 .title {
     font-size: 30px;
-    color: orange;
+    color: var(--first-color);
+    ;
     margin: 0;
     font-weight: bold;
 }
@@ -46,8 +57,8 @@
 
 .menu-toggle {
     display: none;
-    background-color: white;
-    color: black;
+    background-color: var(--second-color);
+    color: var(--dark-body);
     border: none;
     font-size: 20px;
     cursor: pointer;
@@ -65,8 +76,8 @@ nav {
     justify-content: space-between;
     padding: 20px 10px;
     flex-wrap: wrap;
-    background-color: white;
-    border-bottom: 1px solid #ddd;
+    background-color: var(--second-color);
+    border-bottom: 1px solidvar(--fond-gris);
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -87,15 +98,16 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: black;
+    color: var(--dark-body);
     font-size: 30px;
-    font-family: "Amarante", serif;
+    font-family: var(--font);
     padding: 5px 10px;
 }
 
 .nav-links a:hover {
-    color: orange;
-    background-color: #ccc;
+    color: var(--first-color);
+    ;
+    background-color: var(--fond-gris);
     border-radius: 15px;
 }
 
@@ -114,9 +126,11 @@ ul li a {
 
 #description {
     background: none;
-    padding: 30px;
+    padding: 10px;
     border-radius: 15px;
-    margin: 20px 0;
+    width: 100%;
+    height: 550px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #description h2 {
@@ -142,6 +156,7 @@ ul li a {
     margin: 10px 0;
 }
 
+
 /* ! Partie Accordeon */
 
 .faq-section {
@@ -154,24 +169,25 @@ ul li a {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #333;
+    color: var(--dark-mode);
     font-weight: bold;
+    font-family: var(--font);
 }
 
 .accordion {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font);
 }
 
 .accordion-item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solidvar(--fond-gris);
 }
 
 .accordion-header {
-    background-color: white;
-    color: #333;
+    background-color: var(--second-color);
+    color: var(--dark-mode);
     cursor: pointer;
     padding: 16px 20px;
     font-size: 1.1rem;
@@ -180,14 +196,14 @@ ul li a {
 }
 
 .accordion-header:hover {
-    background-color: #f3ebeb;
+    background-color: var(--second-color)
 }
 
 .accordion-body {
     max-height: 0;
     overflow: hidden;
     padding: 0 20px;
-    background-color: #fff;
+    background-color: var(--second-color);
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
@@ -196,7 +212,26 @@ ul li a {
     padding: 16px 20px;
 }
 
+.parent {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    grid-template-rows: repeat(4, 2fr);
+    gap: 8px;
+}
 
+.div1 {
+    margin-top: 45px;
+    grid-row: span 5 / span 5;
+    grid-column-start: 2;
+    font-family: var(--font);
+
+}
+
+.div2 {
+    grid-row: span 5 / span 5;
+    grid-column-start: 3;
+    font-family: var(--font);
+}
 
 /* !  parties contact */
 
@@ -205,13 +240,15 @@ ul li a {
     justify-content: center;
     padding: 50px 0;
     background-color: none;
+    font-family: var(--font);
 }
 
 .custom-form {
     width: 100%;
     max-width: 400px;
-    background-color: #fff;
+    background-color: var(--second-color);
     padding: 30px;
+    height: 540px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -220,7 +257,9 @@ ul li a {
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
-    color: orange;
+    color: var(--first-color);
+    ;
+    font-family: var(--font);
 }
 
 .form-group {
@@ -232,7 +271,8 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
+    font-family: var(--font);
+    color: var(--dark-mode);
 }
 
 input[type="text"],
@@ -241,19 +281,21 @@ input[type="email"],
 textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--fond-gris);
     border-radius: 8px;
     font-size: 1em;
     box-sizing: border-box;
+    font-family: var(--font);
 }
 
 input::placeholder {
-    color: #aaa;
+    color: var(--fond-gris);
 }
 
 .btn {
-    background-color: orange;
-    color: black;
+    background-color: var(--first-color);
+    ;
+    color: var(--dark-body);
     border: none;
     padding: 12px 24px;
     font-size: 1em;
@@ -261,21 +303,60 @@ input::placeholder {
     border-radius: 15px;
     transition: background-color 0.3s ease;
     width: 100%;
+    font-family: var(--font);
 }
 
 .btn:hover {
-    background-color: #999;
-    color: orange;
+    background-color: var(--fond-gris);
+    color: var(--first-color);
+    ;
+}
+
+#modale {
+    display: none;
+    background-color: gray;
+    font-family: var(--font);
+    font-size: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+#btnX {
+    font-family: var(--font);
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 150px;
+    background-color: var(--dark-body);
+    color: var(--second-color);
+    cursor: pointer;
+}
+
+#modale {
+    text-align: center;
+    color: var(--second-color);
+    font-family: var(--font);
+}
+
+.required {
+    color: red;
 }
 
 .footer {
-    background-color: white;
-    color: black;
-    border: 1px solid #ddd;
+    background-color: var(--second-color);
+    color: var(--dark-body);
+    border: 1px solid var(--fond-gris);
     text-align: center;
     padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: var(--font);
+
 }
 
 /* ! ----------- Responsive Design ----------- */
@@ -386,17 +467,22 @@ body.dark-mode .dark-toggle {
     cursor: pointer;
 }
 
+body.dark-mode #top {
+    border: 1px solid var(--second-color);
+    border-radius: 15px;
+}
+
 body.dark-mode nav {
-    background-color: #1e1e1e;
+    background-color: var(--dark-body);
     border-radius: 15px;
     padding: 20px 10px;
 }
 
 body.dark-mode .nav-links {
-    background-color: #1e1e1e;
-    color: #f5f5f5;
+    background-color: var(--dark-body);
+    color: var(--second-color);
     padding: 10px 10px;
-    font-family: "Amarante", serif;
+    font-family: var(--font);
     /* font-size: 5px; */
     margin: 0;
     border-radius: 15px;
@@ -404,7 +490,7 @@ body.dark-mode .nav-links {
 }
 
 body.dark-mode .nav-links a {
-    color: #f5f5f5;
+    color: var(--second-color);
     text-decoration: none;
     padding: 10px 0;
     border-radius: 15px;
@@ -412,15 +498,96 @@ body.dark-mode .nav-links a {
 }
 
 body.dark-mode .nav-links a:hover {
-    background-color: #ff9800;/
+    background-color: var(--first-color);/
 }
 
 body.dark-mode .logo-title {
-    background-color: #1e1e1e;
-    color: white;
+    background-color: var(--dark-body);
+    color: var(--second-color);
 }
 
 body.dark-mode .logo {
-    background-color: #ff9800;
-    color: white;
+    background-color: var(--first-color);
+    color: var(--second-color);
+}
+
+
+
+body.dark-mode .footer {
+    color: var(--second-color);
+    background-color: #333;
+}
+
+body.dark-mode .faq-title {
+    color: var(--second-color);
+
+}
+
+body.dark-mode {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+}
+
+
+
+body.dark-mode a {
+    color: var(--first-color);
+}
+
+
+
+
+body.dark-mode .accordion-item,
+body.dark-mode .modale,
+body.dark-mode .modale1 {
+    background-color: var(--dark-mode);
+    color: var(--second-color);
+
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+    border: 1px solid var(--dark-mode);
+}
+
+body.dark-mode p {
+    color: var(--second-color);
+}
+
+body.dark-mode h2 {
+    color: var(--second-color);
+}
+
+
+body.dark-mode .custom-form {
+    color: var(--second-color);
+    background-color: var(--dark-mode);
+    box-shadow: 0 4px 15px var(--second-color);
+}
+
+body.dark-mode label {
+    color: var(--second-color);
+
+}
+
+body.dark-mode #description {
+    box-shadow: 0 4px 15px var(--second-color);
+    background-color: var(--dark-mode);
+}
+
+body.dark-mode .accordion {
+    box-shadow: 0 4px 15px var(--second-color);
+
+}
+
+body.dark-mode .accordion-header {
+    background-color: var(--dark-mode);
+    color: var(--second-color);
+}
+
+body.dark-mode .accordion-body {
+    background-color: var(--dark-body);
+    color: var(--second-color);
 }

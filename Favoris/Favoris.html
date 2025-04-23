@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="favoris.css".css" />
+  <title>GourmeTech</title>
+  <body>
+    <header id="top">
+      <div>
+        <nav>
+          <div class="logo-title">
+            <div class="logo">
+              <span class="letter">G</span>
+            </div>
+            <h1 class="title">GourmeTech</h1>
+          </div>
+          <button class="menu-toggle" id="btn">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/Accueil/index.html">Accueil</a></li>
+            <li><a href="#">Ajouter une recette</a></li>
+            <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+          </ul>
+          <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
+        </nav>
+      </div>
+    </header>
+
+    <h1>Mes Favoris</h1>
+    <hr width="5%" color="orange" />
+
+    <section>
+      <div class="general">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Rechercher une recette..."
+            class="search-input"
+          />
+          <button class="search-button">Rechercher</button>
+        </div>
+        <div class="filter-container">
+          <div class="filter-group">
+            <p>Catégorie :</p>
+            <label
+              ><input type="checkbox" name="category" value="entrée" />
+              Entrée</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="plat" />
+              Plat</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="dessert" />
+              Dessert</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Temps de préparation :</p>
+            <label
+              ><input type="checkbox" name="time" value="-15" /> < 15 min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="15-30" /> 15 – 30
+              min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="+30" /> + 30 min</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Difficulté:</p>
+            <label
+              ><input type="checkbox" name="difficulty" value="Facile" />
+              Facile</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Moyen" />
+              Moyen</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Difficile" />
+              Difficile</label
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="no-result"
+        style="display: none; text-align: center; margin-top: 2rem"
+      >
+        <p>Aucune recette trouvée 😢</p>
+      </div>
+    </section>
+
+    <div class="parent">
+      <template id="my-template">
+        <div class="div">
+          <div class="card">
+            <div class="img-container">
+              <img class="card-img" src="" alt="" />
+            </div>
+            <h2 class="recipe-title"></h2>
+            <div class="card-content">
+              <p class="type"></p>
+              <p class="duration"></p>
+              <p class="difficulty"></p>
+            </div>
+            <div class="container">
+              <button class="btn">Voir la recette</button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div class="main-content" id="cards-container"></div>
+
+    <script src="/Favoris/favoris.js"></script>
+    <script>
+      const favorites =
+        JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
+      const container = document.getElementById("cards-container");
+
+      favorites.forEach((recipe) => {
+        const template = document.getElementById("my-template");
+        const clone = template.content.cloneNode(true);
+
+        clone.querySelector(".card-img").src = recipe.imageSrc;
+        clone.querySelector(".card-img").alt = recipe.title;
+        clone.querySelector(".recipe-title").textContent = recipe.title;
+        clone.querySelector(".type").textContent = recipe.type;
+        clone.querySelector(".duration").textContent = recipe.duration;
+        clone.querySelector(".difficulty").textContent = recipe.difficulty;
+
+        container.appendChild(clone); // ← le bon endroit maintenant
+      });
+    </script>
+
+    <footer>
+      <hr width="75%" color="orange" />
+      <div class="footer-content">
+        <div class="aside">
+          <div class="footer-column">
+            <h2>Navigation</h2>
+            <ul>
+              <li><a href="#top">Accueil</a></li>
+              <li><a href="#">Ajouter une recette</a></li>
+              <li><a href="#">Mes favoris</a></li>
+              <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h2>À propos de GourmeTech</h2>
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires interactive
+              développée dans le cadre d'un projet pédagogique.
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
+</html>
