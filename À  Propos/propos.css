@@ -604,6 +604,10 @@ body.dark-mode .description {
     background-color: var(--dark-mode);
 }
 
+body.dark-mode .description li {
+    color: var(--second-color);
+}
+
 body.dark-mode .accordion {
     box-shadow: 0 4px 15px var(--second-color);
 

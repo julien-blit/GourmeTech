@@ -1,41 +1,637 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GourmeTech</title>
-  <link rel="stylesheet" href="style1.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body.dark-mode {
+        background-color: #121212;
+        color: #eee;
+      }
 
-  <header class="logo-title">
-    <h1 class="title">Recettes GourmeTech <button id="print-button">🖨️ Imprimer la recette</button> </h1>    
-    
-  </header>
+      body.dark-mode .card,
+      body.dark-mode .fiche-recette,
+      body.dark-mode .favori,
+      body.dark-mode input,
+      body.dark-mode button,
+      body.dark-mode .search-container,
+      body.dark-mode .filter-container {
+        background-color: #1e1e1e;
+        color: #eee;
+        border-color: #444;
+      }
 
-  <section class="selection"> 
+      /* Pour le champ de recherche et les filtres */
+      body.dark-mode input::placeholder {
+        color: #ccc;
+      }
 
-    <label for="recipe-select">Choisissez une recette :</label>
-    <select id="recipe-select">
-      <option value="">-- Sélectionnez une recette --</option>
-      <option value="tarte-pomme.json">Tarte aux pommes</option>
-      <option value="veloute-potiron.json">Velouté de potiron</option>
-      <option value="ratatouille.json">Ratatouille provençale</option>
-    </select>
-  </section>
+      /* Boutons */
+      body.dark-mode .btn-orange {
+        background-color: #ff9800;
+        color: black;
+      }
+      body.dark-mode .btn-orange:hover {
+        background-color: #e67600;
+      }
 
-  <hr>
+      /* Les étiquettes colorées peuvent garder leurs couleurs, mais on peut ajuster le contraste si besoin */
+      body.dark-mode .tag.orange {
+        background-color: #ff9800;
+      }
+      body.dark-mode .tag.green {
+        background-color: #4caf50;
+      }
+      body.dark-mode .tag.blue {
+        background-color: #2196f3;
+      }
 
-  <main class="recipe-detail" id="recipe-container">
-    <!-- Recette chargée dynamiquement -->
-  </main>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .card,
+      .fiche-recette,
+      .favori {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      .card-img,
+      .recette-img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+      }
+      .content-center {
+        display: flex;
+        min-width: 90%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .fiche-recette {
+        display: flex;
+        min-width: 90%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .detail-recette {
+        display: flex;
+        min-width: 90%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-  <hr>
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .card {
+        width: 275px;
+        border-radius: 8px;
+      }
+      .hidden {
+        display: none;
+      }
+      .favori {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .favori img {
+        width: 100px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: bold;
+        color: white;
+        margin: 2px;
+      }
 
-  <footer>
-    <!-- Footer optionnel ici -->
-  </footer>
+      .tag.orange {
+        background-color: orange;
+      }
 
-  <script src="recette1.js"></script>
-</body>
+      .tag.green {
+        background-color: #28a745;
+      }
+
+      .tag.blue {
+        background-color: #007bff;
+      }
+
+      .btn-orange {
+        background-color: orange;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 2px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+        text-align: center;
+      }
+
+      .btn-orange:hover {
+        background-color: darkorange;
+      }
+      .card button {
+        display: block;
+        margin: 10px auto 0; /* espace au-dessus et centré */
+        text-align: center;
+      }
+
+      .coeur {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      .coeur.active {
+        transform: scale(1.3);
+      }
+      .recette-header .coeur {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 26px;
+        z-index: 3;
+      }
+    </style>
+
+    <title>GourmeTech</title>
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <nav>
+          <div class="logo-title">
+            <div class="logo">
+              <span class="letter">G</span>
+            </div>
+            <a href="index.html"><h1 class="title">GourmeTech</h1></a>
+          </div>
+          <button class="menu-toggle" id="btn">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index.html">Accueil</a></li>
+            <li><a href="favoris.html">Mes Favoris</a></li>
+            <li><a href="generer/generer.html">Recettes Aléatoire</a></li>
+            <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+          </ul>
+          <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="general">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Rechercher une recette..."
+            class="search-input"
+          />
+          <button class="search-button">Rechercher</button>
+        </div>
+        <div class="filter-container">
+          <div class="filter-group">
+            <p>Catégorie :</p>
+            <label
+              ><input type="checkbox" name="category" value="entrée" />
+              Entrée</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="plat" />
+              Plat</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="dessert" />
+              Dessert</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Temps de préparation :</p>
+            <label
+              ><input type="checkbox" name="time" value="-15" /> < 15 min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="15-30" /> 15 – 30
+              min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="+30" /> + 30 min</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Difficulté:</p>
+            <label
+              ><input type="checkbox" name="difficulty" value="Facile" />
+              Facile</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Moyen" />
+              Moyen</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Difficile" />
+              Difficile</label
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="no-result"
+        style="display: none; text-align: center; margin-top: 2rem"
+      >
+        <p>Aucune recette trouvée 😢</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <div class="content-center">
+        <!-- <h1 id="page-title">Toutes les Recettes</h1>   -->
+        <div id="liste-recettes" class="row"></div>
+
+        <div id="detail-recette" class="fiche-recette hidden">
+          <h1 id="recette-titre"></h1>
+          <div class="recette-header" style="position: relative">
+            <span id="coeur-detail" class="coeur" style="z-index: 2"></span>
+            <img
+              id="recette-image"
+              src=""
+              alt="Image recette"
+              class="recette-img"
+            />
+            <div class="infos-recette">
+              <p id="recette-categorie"></p>
+              <p id="recette-temps"></p>
+              <p id="recette-difficulte"></p>
+            </div>
+          </div>
+
+          <section>
+            <h2>Ingrédients</h2>
+            <ul id="liste-ingredients"></ul>
+          </section>
+          <section>
+            <h2>Étapes</h2>
+            <ul id="liste-instructions"></ul>
+          </section>
+          <button onclick="retourListe()">Retour à la liste</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let recettes = [];
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const fichiers = [
+          "ratatouille.json",
+          "veloute-potiron.json",
+          "tarte-pomme.json",
+        ];
+        try {
+          const resultats = await Promise.all(
+            fichiers.map((f) => fetch(f).then((r) => r.json()))
+          );
+          recettes = resultats.flat();
+          chargerListeRecettes();
+        } catch (e) {
+          console.error("Erreur chargement recettes :", e);
+        }
+
+        document
+          .getElementById("champ-recherche")
+          .addEventListener("input", filtrerRecettes);
+      });
+
+      function chargerListeRecettes(recettesFiltrees = recettes) {
+        const container = document.getElementById("liste-recettes");
+        container.innerHTML = recettesFiltrees.length
+          ? ""
+          : "<p>Aucune recette trouvée.</p>";
+        document.getElementById("detail-recette").classList.add("hidden");
+        container.classList.remove("hidden");
+
+        recettesFiltrees.forEach((r) => {
+          const isFav = estFavori(r.id);
+          container.innerHTML += `
+          <div class="card">
+            <div class="img-container">
+              <span class="coeur ${isFav ? "active" : ""}" data-id="${r.id}">${
+            isFav ? "❤️" : "🤍"
+          }</span>
+              <img class="card-img" src="${r.image}" alt="${r.titre}">
+            </div>
+            <h3>${r.titre}</h3>
+            <p>
+              <span class="tag orange">${r.categorie}</span>
+              <span class="tag green">${r.temps}</span>
+              <span class="tag blue">${r.difficulte}</span>
+            </p>
+            <button class="btn-orange" onclick="afficherDetail('${
+              r.id
+            }')">Voir la recette</button>
+          </div>`;
+        });
+
+        // après la recharge, le cœur est activé
+        document.querySelectorAll(".coeur").forEach((coeur) => {
+          coeur.addEventListener("click", () => {
+            const id = coeur.dataset.id;
+            const recette = recettes.find((r) => r.id === id);
+            const estAjouté = ajouterOuRetirerFavori(
+              id,
+              recette.titre,
+              recette.image
+            );
+            coeur.classList.toggle("active");
+            coeur.textContent = estAjouté ? "❤️" : "🤍";
+            afficherFavoris();
+          });
+        });
+
+        afficherFavoris();
+      }
+
+      function filtrerRecettes() {
+        const recherche = document
+          .getElementById("champ-recherche")
+          .value.toLowerCase();
+        const filtres = recettes.filter((r) =>
+          r.titre.toLowerCase().includes(recherche)
+        );
+        chargerListeRecettes(filtres);
+      }
+
+      function afficherDetail(id) {
+        const r = recettes.find((recette) => recette.id === id);
+        if (!r) return;
+
+        // Crée un message formaté avec les détails de la recette
+        const recetteDetails = `
+        Titre : ${r.titre}\n
+        Catégorie : ${r.categorie}\n
+        Temps de préparation : ${r.temps}\n
+        Difficulté : ${r.difficulte}\n\n
+        Ingrédients :\n${r.ingredients.join("\n")}\n\n
+        Étapes :\n${r.instructions.join("\n")}
+      `;
+
+        // Affiche un alert avec les détails de la recette
+        alert(recetteDetails);
+
+        // Optionnel : Tu peux aussi garder le code d'affichage du détail dans la page
+        document.getElementById("page-title").textContent = r.titre;
+        document.getElementById("recette-titre").textContent = r.titre;
+        document.getElementById("recette-image").src = r.image;
+        document.getElementById("recette-categorie").textContent =
+          "Catégorie : " + r.categorie;
+        document.getElementById("recette-temps").textContent =
+          "Temps : " + r.temps;
+        document.getElementById("recette-difficulte").textContent =
+          "Difficulté : " + r.difficulte;
+
+        document.getElementById("liste-ingredients").innerHTML = r.ingredients
+          .map((i) => `<li>${i}</li>`)
+          .join("");
+        document.getElementById("liste-instructions").innerHTML = r.instructions
+          .map((i) => `<li>${i}</li>`)
+          .join("");
+
+        const coeurDetail = document.getElementById("coeur-detail");
+        const estFav = estFavori(r.id);
+        coeurDetail.classList.toggle("active", estFav);
+        coeurDetail.textContent = estFav ? "❤️" : "🤍";
+        coeurDetail.dataset.id = r.id;
+
+        coeurDetail.onclick = () => {
+          const res = ajouterOuRetirerFavori(r.id, r.titre, r.image);
+          coeurDetail.classList.toggle("active", res);
+          coeurDetail.textContent = res ? "❤️" : "🤍";
+          afficherFavoris();
+        };
+
+        document.getElementById("liste-recettes").classList.add("hidden");
+        document.getElementById("detail-recette").classList.remove("hidden");
+      }
+
+      function retourListe() {
+        chargerListeRecettes();
+        document.getElementById("champ-recherche").value = "";
+      }
+
+      function estFavori(id) {
+        return (JSON.parse(localStorage.getItem("recettesFavoris")) || []).some(
+          (f) => f.id === id
+        );
+      }
+
+      function ajouterOuRetirerFavori(id, titre, image) {
+        let favoris = JSON.parse(localStorage.getItem("recettesFavoris")) || [];
+        const index = favoris.findIndex((f) => f.id === id);
+        if (index >= 0) {
+          favoris.splice(index, 1);
+        } else {
+          favoris.push({ id, titre, image });
+        }
+        localStorage.setItem("recettesFavoris", JSON.stringify(favoris));
+        return index < 0;
+      }
+
+      function afficherFavoris() {
+        const favoris =
+          JSON.parse(localStorage.getItem("recettesFavoris")) || [];
+        const container = document.getElementById("liste-favoris");
+        const msgVide = document.getElementById("message-vide");
+
+        container.innerHTML = favoris
+          .map(
+            (fav) => `
+          <div class="recette-header" style="position: relative;">  
+          <div class="favori"> 
+              <img id="recette-image" src="${fav.image}" alt="${fav.titre}" class="card-img" >         
+              <strong>${fav.titre}</strong>         
+          </div></div>`
+          )
+          .join("");
+        // <button onclick="retirerFavori('${fav.id}')">❌</button>
+
+        msgVide.style.display = favoris.length ? "none" : "block";
+      }
+
+      function retirerFavori(id) {
+        const favoris = (
+          JSON.parse(localStorage.getItem("recettesFavoris")) || []
+        ).filter((f) => f.id !== id);
+        localStorage.setItem("recettesFavoris", JSON.stringify(favoris));
+        afficherFavoris();
+      }
+
+      document.getElementById("lien-favoris").addEventListener("click", (e) => {
+        e.preventDefault(); // Empêche le comportement par défaut du lien
+
+        // Récupère les recettes enregistrées dans les favoris depuis le localStorage
+        const favoris =
+          JSON.parse(localStorage.getItem("recettesFavoris")) || [];
+
+        // Filtre les recettes qui sont dans les favoris
+        const recettesFavoris = recettes.filter((r) =>
+          favoris.some((f) => f.id === r.id)
+        );
+
+        // Change le titre de la page en "Mes Recettes Favorites"
+        document.getElementById("page-title").textContent =
+          "Mes Recettes Favorites ❤️";
+        document.getElementById("champ-recherche").value = ""; // Vide le champ de recherche
+        chargerListeRecettes(recettesFavoris); // Affiche les recettes favorites
+      });
+
+      //
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add lien link "Mes Favoris"
+        document
+          .getElementById("lien-favoris")
+          .addEventListener("click", (e) => {
+            e.preventDefault(); // empeche le comportement default du lien
+
+            // prendre la recette des favorites de localStorage
+            const favoris =
+              JSON.parse(localStorage.getItem("recettesFavoris")) || [];
+            const recettesFavoris = recettes.filter((r) =>
+              favoris.some((f) => f.id === r.id)
+            );
+
+            // Met à jour le titre de la page
+            document.getElementById("page-title").textContent =
+              "Mes Recettes Favorites ❤️";
+
+            // Vide le champ de recherche
+            document.getElementById("champ-recherche").value = "";
+
+            // Affiche de nouveau toutes les recettes
+            chargerListeRecettes(recettesFavoris);
+
+            // Masque la liste des recettes favorites, affiche toutes les recettes
+            document
+              .getElementById("liste-recettes")
+              .classList.remove("hidden");
+            document.getElementById("detail-recette").classList.add("hidden");
+          });
+
+        // Add le lien pour "Toutes les Recettes"
+        const lienTousRecettes = document.querySelector('a[href="#"]');
+        lienTousRecettes.addEventListener("click", (e) => {
+          e.preventDefault(); // // Empêche le comportement par défaut du lien
+
+          // Met à jour le titre de la page
+          document.getElementById("page-title").textContent =
+            "Toutes les Recettes";
+
+          // Vide le champ de recherche
+          document.getElementById("champ-recherche").value = "";
+
+          // Affiche de nouveau toutes les recettes
+          chargerListeRecettes();
+
+          // Masque la liste des recettes favorites, affiche toutes les recettes
+          document.getElementById("liste-recettes").classList.remove("hidden");
+          document.getElementById("detail-recette").classList.add("hidden");
+        });
+      });
+
+      // details recette
+
+      function afficherDetail(id) {
+        const r = recettes.find((recette) => recette.id === id);
+        if (!r) return;
+
+        // Mise à jour de la section #detail-recette
+        document.getElementById("recette-titre").textContent = r.titre;
+        document.getElementById("recette-image").src = r.image;
+        document.getElementById("recette-categorie").textContent =
+          "Catégorie : " + r.categorie;
+        document.getElementById("recette-temps").textContent =
+          "Temps de préparation : " + r.temps;
+        document.getElementById("recette-difficulte").textContent =
+          "Difficulté : " + r.difficulte;
+
+        // Mise à jour des ingrédients et des étapes
+        document.getElementById("liste-ingredients").innerHTML = r.ingredients
+          .map((i) => `<ul>${i}</ul>`)
+          .join("");
+        document.getElementById("liste-instructions").innerHTML = r.instructions
+          .map((i) => `<ul>${i}</ul>`)
+          .join("");
+
+        // Gestion des favoris
+        const coeurDetail = document.getElementById("coeur-detail");
+        const estFav = estFavori(r.id);
+        coeurDetail.classList.toggle("active", estFav);
+        coeurDetail.textContent = estFav ? "❤️" : "🤍";
+        coeurDetail.dataset.id = r.id;
+
+        coeurDetail.onclick = () => {
+          const res = ajouterOuRetirerFavori(r.id, r.titre, r.image);
+          coeurDetail.classList.toggle("active", res);
+          coeurDetail.textContent = res ? "❤️" : "🤍";
+          afficherFavoris();
+        };
+
+        // Cacher la liste des recettes et afficher les détails
+        document.getElementById("liste-recettes").classList.add("hidden");
+        document.getElementById("detail-recette").classList.remove("hidden");
+      }
+    </script>
+
+    <script src="script.js"></script>
+    <footer>
+      <hr width="75%" color="orange" />
+      <div class="footer-content">
+        <div class="aside">
+          <div class="footer-column">
+            <h2>Navigation</h2>
+            <ul>
+              <!-- <li><a href="#top">Accueil</a></li> -->
+              <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+              <li><a href="favoris.html">Mes favoris</a></li>
+              <li><a href="/generer/generer.html">Recettes Aléatoire</a></li>
+              <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h2>À propos de GourmeTech</h2>
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires<br />interactive
+              développée dans le cadre d'un projet pédagogique.
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
 </html>
+
+--
