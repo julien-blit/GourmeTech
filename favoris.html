@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Styles similaires à ceux d'index.html */
+      body.dark-mode {
+        background-color: #121212;
+        color: #eee;
+      }
+
+      body.dark-mode .card,
+      body.dark-mode .fiche-recette,
+      body.dark-mode .favori,
+      body.dark-mode input,
+      body.dark-mode button,
+      body.dark-mode .search-container,
+      body.dark-mode .filter-container {
+        background-color: #1e1e1e;
+        color: #eee;
+        border-color: #444;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .card,
+      .fiche-recette,
+      .favori {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      .card-img,
+      .recette-img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+      }
+      .content-center {
+        display: flex;
+        min-width: 90%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .card {
+        width: 275px;
+        border-radius: 8px;
+      }
+      .hidden {
+        display: none;
+      }
+      .favori {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .favori img {
+        width: 100px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: bold;
+        color: white;
+        margin: 2px;
+      }
+
+      .tag.orange {
+        background-color: orange;
+      }
+
+      .tag.green {
+        background-color: #28a745;
+      }
+
+      .tag.blue {
+        background-color: #007bff;
+      }
+
+      .btn-orange {
+        background-color: orange;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 2px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+        text-align: center;
+      }
+
+      .btn-orange:hover {
+        background-color: darkorange;
+      }
+
+      .coeur {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .coeur.active {
+        transform: scale(1.3);
+      }
+
+      .recette-detail {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-top: 40px; /* Donne de l'espace en haut */
+        background-color: white;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .recette-detail.hidden {
+        display: none;
+      }
+
+      .recette-img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+      }
+
+      .recette-detail h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .recette-detail ul,
+      .recette-detail ol {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      body.dark-mode .recette-detail {
+        background-color: #333;
+        border-color: #444;
+      }
+
+      body.dark-mode .recette-detail button {
+        background-color: #444;
+        color: #eee;
+      }
+
+      body.dark-mode .recette-img {
+        border: 2px solid #444;
+      }
+
+      body.dark-mode .btn-orange {
+        background-color: #ff7f00;
+        color: white;
+      }
+    </style>
+    <title>GourmeTech - Mes recettes Favorites</title>
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <nav>
+          <div class="logo-title">
+            <div class="logo">
+              <span class="letter">G</span>
+            </div>
+            <a href="index.html"><h1 class="title">GourmeTech</h1></a>
+          </div>
+          <button class="menu-toggle" id="btn">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index.html">Accueil</a></li>
+            <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+            <li><a href="generer/generer.html">Recettes Aléatoire</a></li>
+            <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+          </ul>
+          <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="general">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Rechercher une recette..."
+            class="search-input"
+          />
+          <button class="search-button">Rechercher</button>
+        </div>
+        <div class="filter-container">
+          <div class="filter-group">
+            <p>Catégorie :</p>
+            <label
+              ><input type="checkbox" name="category" value="entrée" />
+              Entrée</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="plat" />
+              Plat</label
+            >
+            <label
+              ><input type="checkbox" name="category" value="dessert" />
+              Dessert</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Temps de préparation :</p>
+            <label
+              ><input type="checkbox" name="time" value="-15" /> < 15 min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="15-30" /> 15 – 30
+              min</label
+            >
+            <label
+              ><input type="checkbox" name="time" value="+30" /> + 30 min</label
+            >
+          </div>
+
+          <div class="filter-group">
+            <p>Difficulté:</p>
+            <label
+              ><input type="checkbox" name="difficulty" value="Facile" />
+              Facile</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Moyen" />
+              Moyen</label
+            >
+            <label
+              ><input type="checkbox" name="difficulty" value="Difficile" />
+              Difficile</label
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="no-result"
+        style="display: none; text-align: center; margin-top: 2rem"
+      >
+        <p>Aucune recette trouvée 😢</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <div class="content-center">
+        <h1 id="page-title">Mes Recettes Favorites ❤️</h1>
+        <div id="liste-recettes" class="row"></div>
+        <div
+          id="message-vide"
+          style="display: none; text-align: center; margin-top: 2rem"
+        >
+          <p>Aucune recette favorite 😢</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Div pour afficher les détails d'une recette, en bas -->
+    <div id="recette-detail" class="recette-detail hidden">
+      <h2>Détails de la recette</h2>
+      <div id="recette-info">
+        <!-- Contenu de la recette sera injecté ici -->
+      </div>
+      <button class="btn-orange" onclick="fermerDetail()">Fermer</button>
+    </div>
+
+    <script>
+      let recettes = [];
+      document.addEventListener("DOMContentLoaded", async () => {
+        const fichiers = [
+          "ratatouille.json",
+          "veloute-potiron.json",
+          "tarte-pomme.json",
+        ];
+        try {
+          const resultats = await Promise.all(
+            fichiers.map((f) => fetch(f).then((r) => r.json()))
+          );
+          recettes = resultats.flat();
+          afficherFavoris();
+        } catch (e) {
+          console.error("Erreur chargement recettes :", e);
+        }
+      });
+
+      function afficherFavoris() {
+        const favoris =
+          JSON.parse(localStorage.getItem("recettesFavoris")) || [];
+        const container = document.getElementById("liste-recettes");
+        const msgVide = document.getElementById("message-vide");
+
+        container.innerHTML = favoris.length
+          ? ""
+          : "<p>Aucune recette favorite 😢</p>";
+        favoris.forEach((fav) => {
+          const recette = recettes.find((r) => r.id === fav.id);
+          if (recette) {
+            container.innerHTML += `
+                    <div class="card">
+                      <div class="img-container">
+                        <img class="card-img" src="${recette.image}" alt="${recette.titre}">
+                      </div>
+                      <h3>${recette.titre}</h3>
+                      <p>
+                        <span class="tag orange">${recette.categorie}</span>
+                        <span class="tag green">${recette.temps}</span>
+                        <span class="tag blue">${recette.difficulte}</span>
+                      </p>
+                      <button class="btn-orange" onclick="afficherDetail('${recette.id}')">Voir la recette</button>
+                    </div>`;
+          }
+        });
+
+        msgVide.style.display = favoris.length ? "none" : "block";
+      }
+
+      function afficherDetail(id) {
+        const r = recettes.find((recette) => recette.id === id);
+        if (!r) return;
+
+        // Sélectionner le div pour les détails
+        const detailDiv = document.getElementById("recette-detail");
+        const recetteInfoDiv = document.getElementById("recette-info");
+
+        // Remplir le div avec les informations de la recette
+        recetteInfoDiv.innerHTML = `
+                <img class="recette-img" src="${r.image}" alt="${r.titre}" />
+                <h3>${r.titre}</h3>
+                <p><strong>Catégorie :</strong> ${r.categorie}</p>
+                <p><strong>Temps de préparation :</strong> ${r.temps}</p>
+                <p><strong>Difficulté :</strong> ${r.difficulte}</p>
+                <h4>Ingrédients :</h4>
+                <ul>
+                  ${r.ingredients
+                    .map((ingredient) => `<li>${ingredient}</li>`)
+                    .join("")}
+                </ul>
+                <h4>Étapes :</h4>
+                <p>
+                  ${r.instructions
+                    .map((instruction) => `<li>${instruction}</li>`)
+                    .join("")}
+               </p>
+              `;
+
+        // Afficher le div de détails après la liste des recettes
+        detailDiv.classList.remove("hidden");
+      }
+
+      // Fonction pour fermer le div de détails
+      function fermerDetail() {
+        const detailDiv = document.getElementById("recette-detail");
+        detailDiv.classList.add("hidden");
+      }
+    </script>
+
+    <script src="script.js"></script>
+    <footer>
+      <hr width="75%" color="orange" />
+      <div class="footer-content">
+        <div class="aside">
+          <div class="footer-column">
+            <h2>Navigation</h2>
+            <ul>
+              <!-- <li><a href="#top">Accueil</a></li> -->
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+
+              <li><a href="/generer/generer.html">Recettes Aléatoire</a></li>
+              <li><a href="/À  Propos/Propos.html">À Propos</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h2>À propos de GourmeTech</h2>
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires<br />interactive
+              développée dans le cadre d'un projet pédagogique.
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
+</html>

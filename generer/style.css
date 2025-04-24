@@ -1,0 +1,478 @@
+:root {
+    --first-color: #FFA500;
+    --dark-mode: #444;
+    --dark-body: #1e1e1e;
+    --second-color: #FFFFFF;
+    --font: "Open Sans",
+        sans-serif;
+}
+
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+.dark-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+
+/* !  ===== LOGO + TITRE  =====  */
+.logo-title {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.letter {
+    font-size: 30px;
+    color: var(--second-color);
+    font-weight: bold;
+}
+
+.title {
+    font-size: 30px;
+    color: var(--first-color);
+    margin: 0;
+    font-weight: bold;
+
+}
+
+
+.menu-toggle {
+    display: none;
+    background-color: var(--second-color);
+    color: var(--dark-body);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 15px;
+    border-radius: 20%;
+    padding: 10px;
+}
+
+
+/* ! ----- NAV  ----- */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    flex-wrap: wrap;
+    background-color: var(--second-color);
+    border-bottom: 1px solid var(--fond-gris);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-body);
+    font-size: 30px;
+    font-family: var(--font);
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    color: var(--first-color);
+    background-color: var(--fond-gris);
+    border-radius: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    display: inline-block;
+    padding: 4px 0;
+    margin-left: 50px;
+}
+
+/* ! === btn changement recette =====*/
+button#new-recette-btn {
+    background-color: var(--first-color);
+    color: var(--second-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button#new-recette-btn:hover {
+    background-color: var(--second-color);
+    color: var(--first-color);
+    transform: scale(1.05);
+}
+
+.centre {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* ! ====  recette ===== */
+
+#recipe-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--second-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    font-family: var(--font);
+    color: var(--dark-mode);
+    text-align: center;
+}
+
+#recette-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--first-color);
+}
+
+#recette-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-body);
+}
+
+#ingredients-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+#ingredients-list li {
+    margin-bottom: 0.3rem;
+}
+
+#instructions {
+    text-align: left;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+
+/* ! ===== Footer ===== */
+.aside {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-body);
+    ;
+    font-family: var(--font);
+}
+
+.footer-column {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+h3 {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: var(--font);
+}
+
+
+
+.footer-column h2 {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--first-color);
+    text-shadow: 1px 1px 1px var(--dark-body);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    display: inline-block;
+    padding: 4px 0;
+    margin-left: 100px;
+}
+
+p {
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.footer {
+    background-color: var(--second-color);
+    color: var(--dark-body);
+    ;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 1rem;
+}
+
+/*! ===== Responsive Design  ===== */
+
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dark-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+    }
+
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 20px;
+        right: 70px;
+        z-index: 10;
+    }
+
+    .logo-title {
+        flex: 1;
+    }
+
+    .nav-links a {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .parent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .description {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .footer {
+        font-size: 14px;
+        padding: 0.8rem;
+    }
+}
+
+
+/*! Responsive Design Tablette  */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dark-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        top: 20px;
+        right: 70px;
+        z-index: 10;
+        display: block;
+    }
+
+    .logo-title {
+        flex: 1;
+    }
+
+    .nav-links a {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        font-size: 14px;
+        padding: 0.8rem;
+    }
+}
+
+/* ! Dark mode styles */
+body.dark-mode .dark-toggle {
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+body.dark-mode {
+    background-color: var(--dark-body);
+}
+
+body.dark-mode nav {
+    background-color: var(--dark-body);
+    border-radius: 15px;
+    padding: 20px 10px;
+}
+
+body.dark-mode .nav-links {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+    padding: 10px 10px;
+    font-family: var(--font);
+    font-size: 5px;
+    margin: 0;
+    border-radius: 15px;
+    transition: background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+body.dark-mode .nav-links a {
+    color: var(--second-color);
+    text-decoration: none;
+    padding: 10px 0;
+    border-radius: 15px;
+    transition: background-color 0.2s ease;
+}
+
+body.dark-mode .nav-links a:hover {
+    background-color: var(--dark-mode);
+    color: var(--first-color)
+}
+
+body.dark-mode .logo-title {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+}
+
+body.dark-mode .logo {
+    background-color: var(--first-color);
+    color: var(--second-color);
+}
+
+body.dark-mode #top {
+    border: 1px solid var(--second-color);
+    border-radius: 15px;
+}
+
+body.dark-mode #recipe-container {
+    background-color: var(--dark-mode);
+    color: var(--second-color);
+}
+
+body.dark-mode #recipe-container h1 {
+    color: var(--first-color);
+}
+
+body.dark-mode #recipe-container h2 {
+    color: var(--first-color);
+}
+
+body.dark-mode #recette-origin {
+    color: var(--second-color);
+}
+
+body.dark-mode #recette-category {
+    color: var(--second-color);
+}
+
+body.dark-mode #ingredients-list {
+    color: var(--second-color);
+}
+
+
+
+body.dark-mode button#new-recette-btn:hover {
+    background-color: var(--dark-mode);
+    color: var(--first-color);
+    transform: scale(1.05);
+}
+
+body.dark-mode .footer-content {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+    ;
+    border-radius: 15px;
+}
+
+body.dark-mode .footer-content a {
+    color: var(--second-color);
+    ;
+}
+
+
+body.dark-mode .footer {
+    background-color: var(--dark-body);
+    color: var(--second-color);
+    ;
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid var(--dark-mode);
+    border-radius: 15px;
+}

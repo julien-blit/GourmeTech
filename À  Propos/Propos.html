@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/À  Propos/propos.css" />
+    <title>GourmeTech</title>
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <nav>
+          <div class="logo-title">
+            <div class="logo">
+              <span class="letter">G</span>
+            </div>
+            <h1 class="title">GourmeTech</h1>
+          </div>
+          <button class="menu-toggle" id="btn">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="/index.html">Accueil</a></li>
+            <li><a href="/ajouter-recettes.html">Ajouter une recette</a></li>
+            <li><a href="/ajouter-recettes.html">Mes Favoris</a></li>
+            <li><a href="/generer/generer.html">Recettes Aléatoire</a></li>
+          </ul>
+          <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
+        </nav>
+      </div>
+    </header>
+    <div class="parent">
+      <div class="div1">
+        <!--  ! Description -->
+
+        <section class="description">
+          <h2>🍽️ Découvrez, cuisinez, savourez !</h2>
+          <hr width="80%" color="orange" />
+          <p>
+            GourmeTech vous propose des recettes faciles à trouver, à filtrer et
+            à garder sous la main.
+          </p>
+          <br />
+          <ul>
+            <li>
+              🔍 Recherchez par mots-clés, temps, difficulté ou type de plat.
+            </li>
+            <br />
+            <li>💾 Ajoutez vos recettes préférées en favoris.</li>
+            <br />
+            <li>🌗 Passez du mode clair au sombre selon vos envies.</li>
+            <br />
+            <li>
+              📄 Chaque recette est détaillée pas à pas, avec suggestions à la
+              clé.
+            </li>
+          </ul>
+          <p>
+            Un site pensé pour les gourmands pressés comme pour les chefs en
+            herbe !
+          </p>
+        </section>
+      </div>
+      <!--! Contact  -->
+      <div class="div2">
+        <div class="form-container">
+          <form class="custom-form">
+            <h1>Contact</h1>
+            <div class="form-group">
+              <label for="name">Nom<span class="required">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="Name"
+                placeholder="Votre nom"
+                required
+                minlength="2"
+                maxlength="10"
+              />
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prénom<span class="required">*</span></label>
+              <input
+                type="text"
+                id="prenom"
+                name="FirstName"
+                placeholder="Votre prénom"
+                required
+                minlength="2"
+                maxlength="10"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message"
+                >Message<span class="required">*</span></label
+              >
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Votre message"
+                required
+                minlength="10"
+                maxlength="150"
+              ></textarea>
+            </div>
+            <p>Champs obligatoire <span class="required">*</span></p>
+            <div class="form-group">
+              <button type="submit" class="btn">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--! FAQ -->
+    <section class="faq-section">
+      <h2 class="faq-title">FAQ – Foire Aux Questions</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            🥄 Je suis nul·le en cuisine… vos recettes sont-elles faites pour
+            moi ?
+          </div>
+          <div class="accordion-body">
+            Bien sûr ! Ici, on ne juge pas les compétences, juste la
+            gourmandise...
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            ⏱️ Combien de temps faut-il pour faire vos recettes ?
+          </div>
+          <div class="accordion-body">
+            On a pensé à tout le monde : les pressé·es, les patient·es et les
+            perfectionnistes...
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            📸 Puis-je publier mes propres recettes ?
+          </div>
+          <div class="accordion-body">
+            Pas encore… mais c’est dans le four ! Une section “communauté”
+            arrive bientôt...
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+    <footer>
+      <hr width="75%" color="orange" />
+      <div class="footer-content">
+        <div class="aside">
+          <div class="footer-column">
+            <h2>Navigation</h2>
+            <ul>
+              <li><a href="/index.html">Accueil</a></li>
+              <li><a href="/ajouter-recettes.html">Ajouter une recette</a></li>
+              <li><a href="/favoris.html">Mes favoris</a></li>
+              <li><a href="/generer/generer.html">Recettes Aléatoire</a></li>
+              <!-- <li><a href="/À  Propos/Propos.html">À Propos</a></li> -->
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h2>À propos de GourmeTech</h2>
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires<br />interactive
+              développée dans le cadre d'un projet pédagogique.
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
+</html>
