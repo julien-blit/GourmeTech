@@ -706,6 +706,11 @@ body.dark-mode .main-content {
   border-radius: 15px;
 }
 
+body.dark-mode .btn a:hover {
+  color: var(--first-color);
+
+}
+
 body.dark-mode .footer-content {
   background-color: var(--dark-body);
   color: var(--second-color);
