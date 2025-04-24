@@ -1,5 +1,5 @@
  
-// ! Mode Dark //
+// !  ===== Mode Dark  ===== //
 
 let theme = localStorage.getItem("theme");
 
@@ -21,7 +21,7 @@ toggleBtn.addEventListener("click", function() {
     }
 });
 
-//! navbar //
+//!  ===== navbar  ===== //
 
   const menuBtn = document.getElementById('btn');
 const liens = document.getElementById('nav-links');
@@ -32,7 +32,7 @@ menuBtn.addEventListener('click', function() {
 
 
 
-//! Like //
+//!  ===== Like  ===== //
 const coeurs = document.querySelectorAll(".coeur");
 
 // Récupérer les favoris existants une fois pour tous
@@ -54,8 +54,6 @@ coeurs.forEach((coeur) => {
 });
 
 
-
-
 coeurs.forEach((coeur) => {
   coeur.addEventListener("click", () => {
     const card = coeur.closest('.card');
@@ -73,27 +71,33 @@ coeurs.forEach((coeur) => {
       difficulty
     };
 
-    // Vérifie si la recette est déjà dans les favoris
+    //!  Vérifie si la recette est déjà dans les favoris
+    
     const index = favorites.findIndex(r => r.title === recipe.title);
 
     if (index !== -1) {
-      // Déjà en favoris, on retire
+
+      //!  Déjà en favoris, on retire
+
       favorites.splice(index, 1);
       coeur.classList.remove("active");
       coeur.textContent = "🤍";
     } else {
-      // Pas encore en favoris, on ajoute
+
+      //!  Pas encore en favoris, on ajoute
+
       favorites.push(recipe);
       coeur.classList.add("active");
       coeur.textContent = "❤️";
     }
 
-    // Met à jour le localStorage
+    //!  Met à jour le localStorage
+
     localStorage.setItem("favoriteRecipes", JSON.stringify(favorites));
   });
 });
 
-//! search //
+//!  ===== search  ===== //
 
 document.querySelector('.search-button').addEventListener('click', () => {
   const searchText = document.querySelector('.search-input').value.toLowerCase();
@@ -104,23 +108,23 @@ document.querySelector('.search-button').addEventListener('click', () => {
  
 
 
-  //! Récupération des filtres cochés
+  //!  ===== Récupération des filtres cochés =====//
   
   const Checked = (name) =>                            // ? recuperation en liste 
     Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);  // ? Array. transformation en tableau + .map  parcour chaque element extrais de la valeur 
 
   
- //! Récupération des filtres 
+ //!  ===== Récupération des filtres  ===== //
   
   const selectedCategories = Checked('category');
   const selectedTimes = Checked('time');
   const selectedDifficulties = Checked('difficulty');
 
-  //! compte le nombre de card trouvées 
+  //! ===== compte le nombre de card trouvées  ===== //
 
   let result = 0;
 
-  //! recuperation des infos de chaque carte
+  //! ===== recuperation des infos de chaque carte =====//
 
   cards.forEach(card => {
     const title = card.querySelector('.recipe-title').textContent.toLowerCase();
@@ -132,7 +136,7 @@ document.querySelector('.search-button').addEventListener('click', () => {
     const verifCategory = selectedCategories.length ? selectedCategories.includes(type) : true;
 
 
-    //! passé temps => minute 
+    //!  ===== passé temps => minute  =====//
 
     const minutes = parseInt(duration);
     let time = '';
@@ -143,7 +147,7 @@ document.querySelector('.search-button').addEventListener('click', () => {
     const verifTime = selectedTimes.length ? selectedTimes.includes(time) : true;
     const verifDifficulty = selectedDifficulties.length ? selectedDifficulties.includes(difficulty) : true;
 
-    //! affiche les card rechercher 
+    //!  ===== affiche les card rechercher ===== //
 
     if (verifText && verifCategory && verifTime && verifDifficulty) {
       card.style.display = 'block';
@@ -153,34 +157,48 @@ document.querySelector('.search-button').addEventListener('click', () => {
     }
   });
 
-  //!  Affiche le message "Aucune recette trouvée 😢"
+  //! ===== Affiche le message "Aucune recette trouvée 😢"  ===== //
   
   noResult.style.display = result === 0 ? 'block' : 'none';
 });
 
-//! etoiles //
+//! ===== etoiles ===== //
 
-document.querySelectorAll('.notation').forEach(notation => {
+document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
   const stars = notation.querySelectorAll('.star');
+  const storageKey = `notation-${notationIndex}`;
+
+  // ! Recharger la note sauvegardée
+
+  const savedNote = parseInt(localStorage.getItem(storageKey));
+  if (!isNaN(savedNote)) {
+    for (let i = 0; i < savedNote; i++) {
+      stars[i].classList.add('selected');
+    }
+    notation.setAttribute('data-notation', savedNote);
+  }
 
   stars.forEach((star, index) => {
     star.addEventListener('click', () => {
-      //!  Supprime les classes "selected" de toutes les étoiles
       stars.forEach(s => s.classList.remove('selected'));
 
-      //!  Ajoute "selected" jusqu’à l’étoile cliquée
+      //!  Ajouter les étoiles sélectionnées
+
       for (let i = 0; i <= index; i++) {
         stars[i].classList.add('selected');
       }
 
-      //!  Facultatif : stocker la note dans un attribut ou log
-      const note = star.getAttribute('data-value');
-      console.log("Note donnée :", note);
+      //! Récupérer la note 
+      const note = index + 0;
+
+      // !  Sauvegarder la note
+
+      localStorage.setItem(storageKey, note);
       notation.setAttribute('data-notation', note);
+      console.log("Note donnée :", note);
     });
   });
 });
-
 
 
 

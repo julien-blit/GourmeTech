@@ -606,7 +606,8 @@ body.dark-mode .search-button {
 }
 
 body.dark-mode .search-button:hover {
-  background-color: #ff7c00;
+  background-color: var(--dark-mode);
+  color: var(--first-color)
 }
 
 /*! Filtres */
@@ -671,7 +672,8 @@ body.dark-mode .nav-links a {
 }
 
 body.dark-mode .nav-links a:hover {
-  background-color: var(--first-color);
+  background-color: var(--dark-mode);
+  color: var(--first-color)
 }
 
 body.dark-mode .logo-title {
