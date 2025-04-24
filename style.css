@@ -85,23 +85,26 @@ nav {
 }
 
 .nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .nav-links li {
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
 }
 
 
 .nav-links a {
   text-decoration: none;
   color: var(--dark-body);
-  ;
+  margin: 0;
+  padding: 0.5rem 0;
+  text-align: center;
   font-size: 30px;
   font-family: var(--font);
 }
@@ -369,39 +372,25 @@ p {
 }
 
 
-/*! Responsive Design mobile */
+/*! ---------------------- */
+/*! Responsive Design CSS */
+/*! ---------------------- */
 
-@media screen and (max-width: 768px) {
+/* === Mobile - max 468px === */
+@media screen and (max-width: 468px) {
   .nav-links {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
   }
-
-  .dark-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    /* Reste à droite */
-    z-index: 10;
-  }
-
 
   .nav-links.show {
     display: flex;
-  }
-
-  .menu-toggle {
-    position: absolute;
-    top: 20px;
-    right: 70px;
-    z-index: 10;
-  }
-
-  .logo-title {
-    flex: 1;
   }
 
   .nav-links a {
@@ -411,6 +400,21 @@ p {
 
   .menu-toggle {
     display: block;
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    z-index: 10;
+  }
+
+  .dark-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+
+  .logo-title {
+    flex: 1;
   }
 
   .search-container {
@@ -420,10 +424,7 @@ p {
     margin-left: 0;
   }
 
-  .search-input {
-    width: 100%;
-  }
-
+  .search-input,
   .search-button {
     width: 100%;
   }
@@ -455,21 +456,35 @@ p {
 
   .footer-column {
     font-size: 14px;
-    margin-left: ;
+    margin-left: 0;
   }
-
-
 }
 
-/*! Responsive Design Tablette  */
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+/* === Petits écrans intermédiaires - 469px à 767px === */
+@media screen and (min-width: 469px) and (max-width: 767px) {
   .nav-links {
     display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    z-index: 10;
   }
 
   .dark-toggle {
@@ -479,8 +494,52 @@ p {
     z-index: 10;
   }
 
+  .search-container,
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input,
+  .search-button {
+    width: 100%;
+  }
+
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .footer {
+    font-size: 14px;
+    padding: 1rem;
+  }
+}
+
+/* === Tablette - 768px à 1024px === */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .nav-links.show {
     display: flex;
+  }
+
+  .nav-links a {
+    font-size: 30px;
+    margin-bottom: 20px;
   }
 
   .menu-toggle {
@@ -491,13 +550,15 @@ p {
     display: block;
   }
 
-  .logo-title {
-    flex: 1;
+  .dark-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
   }
 
-  .nav-links a {
-    font-size: 30px;
-    margin-bottom: 20px;
+  .logo-title {
+    flex: 1;
   }
 
   .search-container {
@@ -507,15 +568,10 @@ p {
     margin-left: 0;
   }
 
-  .search-input {
-    width: 100%;
-  }
-
+  .search-input,
   .search-button {
     width: 100%;
   }
-
-
 
   .filter-container {
     flex-direction: row;
@@ -523,22 +579,17 @@ p {
     flex-wrap: wrap;
   }
 
-
   .filter-group {
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
-
   }
 
   .filter-group>p {
     width: 100%;
     margin: 0;
     font-weight: bold;
-
   }
-
-
 
   .filter-group label {
     display: flex;
@@ -546,9 +597,7 @@ p {
     gap: 0.5rem;
     white-space: nowrap;
     width: auto;
-
   }
-
 
   .main-content {
     display: flex;
@@ -566,6 +615,31 @@ p {
   .footer {
     font-size: 14px;
     padding: 0.8rem;
+  }
+}
+
+/* === Laptops (MacBook Air etc.) - 1025px à 1366px === */
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+  .nav-links a {
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 450px;
+  }
+
+  .footer {
+    font-size: 16px;
+    padding: 1rem;
   }
 }
 

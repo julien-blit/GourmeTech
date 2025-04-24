@@ -189,7 +189,7 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
       }
 
       //! Récupérer la note 
-      const note = index + 0;
+      const note = index + 1;
 
       // !  Sauvegarder la note
 
