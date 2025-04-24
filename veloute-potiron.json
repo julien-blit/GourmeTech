@@ -3,6 +3,7 @@
     "id": "3",
     "image": "images/veloute-potiron.jpg",
     "titre": "Velouté de potiron",
+    "categorie": "Entrée",
     "temps": "40 minutes",
     "difficulte": "Facile",
     "ingredients": [

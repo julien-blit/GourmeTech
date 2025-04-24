@@ -73,20 +73,6 @@
         align-items: center;
         text-align: center;
       }
-      .fiche-recette {
-        display: flex;
-        min-width: 90%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .detail-recette {
-        display: flex;
-        min-width: 90%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
       
       .row {
         display: flex;
@@ -276,16 +262,16 @@
                 <p id="recette-difficulte"></p>
               </div>
             </div>
-          
+    
             <section>
               <h2>Ingrédients</h2>
               <ul id="liste-ingredients"></ul>
             </section>
             <section>
               <h2>Étapes</h2>
-              <ul id="liste-instructions"></ul>
+              <ol id="liste-instructions"></ol>
             </section>
-            <button onclick="retourListe()">Retour à la liste</button>
+            <button onclick="retourListe()">← Retour à la liste</button>
           </div>
     
       </div>  
@@ -328,6 +314,13 @@
               <span class="tag blue">${r.difficulte}</span>
             </p>
             <button class="btn-orange" onclick="afficherDetail('${r.id}')">Voir la recette</button>
+               <div class="notation">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+        </div>
           </div>`;
       });
     
@@ -503,44 +496,6 @@
         document.getElementById("detail-recette").classList.add("hidden");
       });
     });
-
-// details recette
-
-function afficherDetail(id) {
-  const r = recettes.find(recette => recette.id === id);
-  if (!r) return;
-
-  // Mise à jour de la section #detail-recette
-  document.getElementById("recette-titre").textContent = r.titre;
-  document.getElementById("recette-image").src = r.image;
-  document.getElementById("recette-categorie").textContent = "Catégorie : " + r.categorie;
-  document.getElementById("recette-temps").textContent = "Temps de préparation : " + r.temps;
-  document.getElementById("recette-difficulte").textContent = "Difficulté : " + r.difficulte;
-
-  // Mise à jour des ingrédients et des étapes
-  document.getElementById("liste-ingredients").innerHTML = r.ingredients.map(i => `<ul>${i}</ul>`).join('');
-  document.getElementById("liste-instructions").innerHTML = r.instructions.map(i => `<ul>${i}</ul>`).join('');
-
-  // Gestion des favoris
-  const coeurDetail = document.getElementById("coeur-detail");
-  const estFav = estFavori(r.id);
-  coeurDetail.classList.toggle("active", estFav);
-  coeurDetail.textContent = estFav ? "❤️" : "🤍";
-  coeurDetail.dataset.id = r.id;
-
-  coeurDetail.onclick = () => {
-    const res = ajouterOuRetirerFavori(r.id, r.titre, r.image);
-    coeurDetail.classList.toggle("active", res);
-    coeurDetail.textContent = res ? "❤️" : "🤍";
-    afficherFavoris();
-  };
-
-  // Cacher la liste des recettes et afficher les détails
-  document.getElementById("liste-recettes").classList.add("hidden");
-  document.getElementById("detail-recette").classList.remove("hidden");
-}
-
-
       </script>
     
 

@@ -3,6 +3,7 @@
     "id": "2",
     "image": "images/ratatouille.jpg",
     "titre": "Ratatouille provençale",
+    "categorie": "Plat",
     "temps": "1h15",
     "difficulte": "Facile",
     "ingredients": [
