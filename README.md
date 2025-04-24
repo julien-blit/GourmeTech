@@ -35,6 +35,8 @@ Moteur de recherche de recettes
 
 Interface responsive améliorée
 
+Ajout de Favoris
+
 🌙 Mode sombre
 
 # À propos
