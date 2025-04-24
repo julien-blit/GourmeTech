@@ -158,6 +158,28 @@ document.querySelector('.search-button').addEventListener('click', () => {
   noResult.style.display = result === 0 ? 'block' : 'none';
 });
 
+//! etoiles //
+
+document.querySelectorAll('.notation').forEach(notation => {
+  const stars = notation.querySelectorAll('.star');
+
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      //!  Supprime les classes "selected" de toutes les étoiles
+      stars.forEach(s => s.classList.remove('selected'));
+
+      //!  Ajoute "selected" jusqu’à l’étoile cliquée
+      for (let i = 0; i <= index; i++) {
+        stars[i].classList.add('selected');
+      }
+
+      //!  Facultatif : stocker la note dans un attribut ou log
+      const note = star.getAttribute('data-value');
+      console.log("Note donnée :", note);
+      notation.setAttribute('data-notation', note);
+    });
+  });
+});
 
 
 

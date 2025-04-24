@@ -219,6 +219,27 @@ p {
   font-family: var(--font);
 }
 
+/* ! Etoile de notation  */
+.notation {
+  text-align: center;
+  margin-top: 50 auto;
+  font-size: 1.5rem;
+  color: #f5a623;
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.selected,
+.star:hover,
+.star:hover~.star {
+  color: #f5a623;
+}
+
 /* ! ----- like  ----- */
 
 .coeur {

@@ -124,6 +124,8 @@ ul li a {
 
 /*! description */
 
+
+
 .description {
     background: none;
     padding: 10px;
@@ -137,23 +139,30 @@ ul li a {
     font-size: 24px;
     text-align: center;
     margin-bottom: 20px;
+    color: var(--dark-body);
+
 }
 
 .description p {
     font-size: 16px;
     line-height: 1.6;
     text-align: center;
+    color: var(--dark-body);
 }
 
 .description ul {
     list-style: none;
     padding: 0;
     text-align: center;
+    color: var(--dark-body);
 }
 
 .description ul li {
     font-size: 16px;
     margin: 10px 0;
+    color: var(--dark-body);
+    border: none;
+    text-decoration: none;
 }
 
 
@@ -182,7 +191,7 @@ ul li a {
 }
 
 .accordion-item {
-    border-bottom: 1px solidvar(--fond-gris);
+    border-bottom: 1px solid var(--fond-gris);
 }
 
 .accordion-header {
@@ -294,7 +303,6 @@ input::placeholder {
 
 .btn {
     background-color: var(--first-color);
-    ;
     color: var(--dark-body);
     border: none;
     padding: 12px 24px;
@@ -312,36 +320,7 @@ input::placeholder {
     ;
 }
 
-#modale {
-    display: none;
-    background-color: gray;
-    font-family: var(--font);
-    font-size: 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-}
 
-#btnX {
-    font-family: var(--font);
-    text-transform: uppercase;
-    font-size: 20px;
-    margin-top: 150px;
-    background-color: var(--dark-body);
-    color: var(--second-color);
-    cursor: pointer;
-}
-
-#modale {
-    text-align: center;
-    color: var(--second-color);
-    font-family: var(--font);
-}
 
 .required {
     color: red;
@@ -359,7 +338,7 @@ input::placeholder {
 
 }
 
-/* ! ----------- Responsive Design ----------- */
+/*! ----------- Responsive Design ----------- */
 
 @media screen and (max-width: 768px) {
     .nav-links {
@@ -420,6 +399,7 @@ input::placeholder {
 
 
 /*! Responsive Design Tablette  */
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .nav-links {
         display: none;
@@ -469,7 +449,6 @@ input::placeholder {
 
 
 /* ! Dark mode styles */
-
 body.dark-mode .dark-toggle {
     background-color: transparent;
     font-size: 20px;
@@ -492,10 +471,11 @@ body.dark-mode .nav-links {
     color: var(--second-color);
     padding: 10px 10px;
     font-family: var(--font);
-    /* font-size: 5px; */
-    margin: 0;
+    font-size: 5px;
+    */ margin: 0;
     border-radius: 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 body.dark-mode .nav-links a {
@@ -539,16 +519,8 @@ body.dark-mode {
 
 
 
-body.dark-mode a {
-    color: var(--first-color);
-}
 
-
-
-
-body.dark-mode .accordion-item,
-body.dark-mode .modale,
-body.dark-mode .modale1 {
+body.dark-mode .accordion-item {
     background-color: var(--dark-mode);
     color: var(--second-color);
 
