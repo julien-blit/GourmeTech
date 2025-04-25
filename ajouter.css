@@ -1,0 +1,238 @@
+.hidden {
+  display: none;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode .card,
+body.dark-mode .fiche-recette,
+body.dark-mode .favori,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode button,
+body.dark-mode .search-container,
+body.dark-mode .filter-container {
+  background-color: #1e1e1e;
+  color: #eee;
+  border-color: #444;
+}
+
+/* Pour le champ de recherche et les filtres */
+body.dark-mode input::placeholder {
+  color: #ccc;
+}
+
+/* Boutons */
+body.dark-mode .btn-orange {
+  background-color: #ff9800;
+  color: black;
+}
+body.dark-mode .btn-orange:hover {
+  background-color: #e67600;
+}
+
+/* Les étiquettes colorées peuvent garder leurs couleurs, mais on peut ajuster le contraste si besoin */
+body.dark-mode .tag.orange {
+  background-color: #ff9800;
+}
+body.dark-mode .tag.green {
+  background-color: #4caf50;
+}
+body.dark-mode .tag.blue {
+  background-color: #2196f3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h4 {
+    text-align: center;
+    color: darkorange;
+    font-size: 2rem;
+  }
+
+h5 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card,
+.fiche-recette,
+.favori {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+.card-img,
+.recette-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  width: 275px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.hidden {
+  display: none;
+}
+.favori {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.favori img {
+  width: 100px;
+}
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: white;
+  margin: 2px;
+}
+
+.tag.orange {
+  background-color: orange;
+}
+
+.tag.green {
+  background-color: #28a745;
+}
+
+.tag.blue {
+  background-color: #007bff;
+}
+
+.btn-orange {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.btn-orange:hover {
+  background-color: darkorange;
+}
+.card button {
+  display: block;
+  margin: 10px auto 0; /* espace au-dessus et centré */
+  text-align: center;
+}
+
+.coeur {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.coeur.active {
+  transform: scale(1.3);
+}
+.recette-header .coeur {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 26px;
+  z-index: 3;
+}
+.form-container {
+  min-height: 100vh; /* pleine hauteur d’écran */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centre verticalement */
+}
+
+form#form-recette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form#form-recette label {
+  display: block; /* Force chaque label à prendre toute la largeur et être sur une nouvelle ligne */
+  margin-bottom: 10px; /* Espacement entre les champs */
+  text-align: center;
+  justify-content: center;
+  width: 90%;
+}
+
+form#form-recette input[type="text"],
+form#form-recette input[type="file"],
+form#form-recette select,
+form#form-recette textarea {
+  width: 90%; /*  largeur du formulaire */
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+}
+
+form#form-recette button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form#form-recette button:hover {
+  justify-content: center;
+  background-color: #e67600;
+}
+
+#liste-recettes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+section {
+  padding: 20px;
+  margin-top: 20px;
+}
