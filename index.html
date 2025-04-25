@@ -5,11 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale= 0.8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.6);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 1rem 2rem;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .close {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: black;
+      }
+
+    </style>
     <title>GourmeTech</title>
   </head>
   <body>
@@ -18,9 +55,9 @@
         <nav>
           <div class="logo-title">
             <div class="logo">
-              <span class="letter">G</span>
+              <a href="index.html"><span class="letter">G</span>
             </div>
-            <h1 class="title">GourmeTech</h1>
+            <h1 class="title">GourmeTech</h1></a>
           </div>
           <button class="menu-toggle" id="btn">☰</button>
           <ul class="nav-links" id="nav-links">
@@ -36,78 +73,59 @@
     <section>
       <div class="general">
         <div class="search-container">
-          <input
-            type="text"
-            placeholder="Rechercher une recette..."
-            class="search-input"
-          />
+          <input type="text" placeholder="Rechercher une recette..." class="search-input"/>
           <button class="search-button">Rechercher</button>
         </div>
         <div class="filter-container">
           <div class="filter-group">
             <p>Catégorie :</p>
-            <label
-              ><input type="checkbox" name="category" value="entrée" />
-              Entrée</label
-            >
-            <label
-              ><input type="checkbox" name="category" value="plat" />
-              Plat</label
-            >
-            <label
-              ><input type="checkbox" name="category" value="dessert" />
-              Dessert</label
-            >
+            <label><input type="checkbox" name="category" value="entrée" />
+              Entrée</label>
+            <label><input type="checkbox" name="category" value="plat" />
+              Plat</label>
+            <label><input type="checkbox" name="category" value="dessert" />
+              Dessert</label>
           </div>
 
           <div class="filter-group">
             <p>Temps de préparation :</p>
-            <label
-              ><input type="checkbox" name="time" value="-15" /> < 15 min</label
-            >
-            <label
-              ><input type="checkbox" name="time" value="15-30" /> 15 – 30
-              min</label
-            >
-            <label
-              ><input type="checkbox" name="time" value="+30" /> + 30 min</label
-            >
+            <label><input type="checkbox" name="time" value="-15" /> - 15 min</label>
+            <label><input type="checkbox" name="time" value="15-30" /> 15 – 30 min</label>
+            <label><input type="checkbox" name="time" value="+30" /> + 30 min</label>
           </div>
 
           <div class="filter-group">
             <p>Difficulté:</p>
-            <label
-              ><input type="checkbox" name="difficulty" value="Facile" />
-              Facile</label
-            >
-            <label
-              ><input type="checkbox" name="difficulty" value="Moyen" />
-              Moyen</label
-            >
-            <label
-              ><input type="checkbox" name="difficulty" value="Difficile" />
-              Difficile</label
-            >
+            <label><input type="checkbox" name="difficulty" value="Facile" />
+              Facile</label>
+            <label><input type="checkbox" name="difficulty" value="Moyen" />
+              Moyen</label>
+            <label><input type="checkbox" name="difficulty" value="Difficile" />
+              Difficile</label>
           </div>
         </div>
       </div>
-      <div
-        class="no-result"
-        style="display: none; text-align: center; margin-top: 2rem"
-      >
+      <div class="no-result" style="display: none; text-align: center; margin-top: 2rem">
         <p>Aucune recette trouvée 😢</p>
       </div>
     </section>
+
+    <div id="recipeModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle">Titre de la recette</h2>
+        <img id="modalImage" src="" alt="image recette" style="max-width:100%; height:auto;">
+        <p><strong>Catégorie :</strong> <span id="modalType"></span></p>
+        <p><strong>Durée :</strong> <span id="modalDuration"></span></p>
+        <p><strong>Difficulté :</strong> <span id="modalDifficulty"></span></p>
+      </div>
+    </div>
 
     <main class="main-content">
       <div class="card">
         <div class="img-container">
           <span class="coeur">🤍</span>
-          <img
-            class="card-img"
-            src="/assets/images/tarte-pommes.jpg"
-            alt="Tarte au Pommes"
-          />
+          <img class="card-img" src="assets/images/tarte-pommes.jpg" alt="Tarte au Pommes" />
         </div>
         <h2 class="recipe-title">Tarte aux pommes</h2>
         <div class="card-content">
@@ -116,9 +134,7 @@
           <p class="difficulty">Facile</p>
         </div>
         <div class="container">
-          <button href="recette.html" class="btn">
-            <a href="recette.html">Voir la recette</a>
-          </button>
+          <button class="btn voir-recette">Voir la recette</button>
         </div>
         <div class="notation">
           <span class="star">★</span>
@@ -132,11 +148,7 @@
       <div class="card">
         <div class="img-container">
           <span class="coeur">🤍</span>
-          <img
-            class="card-img"
-            src="/assets/images/ratatouille.jpg"
-            alt="ratatouille"
-          />
+          <img class="card-img" src="assets/images/ratatouille.jpg" alt="ratatouille" />
         </div>
         <h2 class="recipe-title">Ratatouille Provençale</h2>
         <div class="card-content">
@@ -144,9 +156,7 @@
           <p class="duration">60 min</p>
           <p class="difficulty">Moyen</p>
         </div>
-        <button href="recette.html" class="btn">
-          <a href="recette.html">Voir la recette</a>
-        </button>
+        <button class="btn voir-recette">Voir la recette</button>
         <div class="notation">
           <span class="star">★</span>
           <span class="star">★</span>
@@ -159,11 +169,7 @@
       <div class="card">
         <div class="img-container">
           <span class="coeur">🤍</span>
-          <img
-            class="card-img"
-            src="/assets/images/veloute-potiron.jpg"
-            alt="veloute-potiron"
-          />
+          <img class="card-img" src="assets/images/veloute-potiron.jpg"  alt="veloute-potiron" />
         </div>
         <h2 class="recipe-title">veloute-potiron</h2>
         <div class="card-content">
@@ -171,9 +177,7 @@
           <p class="duration">30 min</p>
           <p class="difficulty">Facile</p>
         </div>
-        <button href="recette.html" class="btn">
-          <a href="recette.html">Voir la recette</a>
-        </button>
+        <button class="btn voir-recette">Voir la recette</button>
         <div class="notation">
           <span class="star">★</span>
           <span class="star">★</span>
@@ -183,6 +187,86 @@
         </div>
       </div>
     </main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const heartIcons = document.querySelectorAll(".coeur"); // Cibler tous les cœurs
+  const recipes = document.querySelectorAll(".card"); // Cibler toutes les cartes de recettes
+
+  // Charger les favoris depuis le localStorage
+  const loadFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    heartIcons.forEach((heart, index) => {
+      if (favorites.includes(index)) {
+        heart.textContent = "❤️"; // Coeur rempli si recette est favorite
+      } else {
+        heart.textContent = "🤍"; // Coeur vide si recette n'est pas favorite
+      }
+    });
+  };
+
+  // Sauvegarder les favoris dans le localStorage
+  const saveFavorites = (favorites) => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  };
+
+  // Ajouter ou retirer une recette des favoris au clic
+  heartIcons.forEach((heart, index) => {
+    heart.addEventListener("click", () => {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      
+      if (favorites.includes(index)) {
+        // Si déjà dans les favoris, retirer
+        favorites = favorites.filter(item => item !== index);
+        heart.textContent = "🤍"; // Coeur vide
+      } else {
+        // Si pas encore dans les favoris, ajouter
+        favorites.push(index);
+        heart.textContent = "❤️"; // Coeur rempli
+      }
+      
+      // Sauvegarder la liste mise à jour des favoris
+      saveFavorites(favorites);
+    });
+  });
+
+  // Charger les favoris lorsque la page est prête
+  loadFavorites();
+});
+</script>
+<script>
+  document.querySelectorAll('.voir-recette').forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card');
+      const title = card.querySelector('.recipe-title').textContent;
+      const imgSrc = card.querySelector('.card-img').src;
+      const type = card.querySelector('.type').textContent;
+      const duration = card.querySelector('.duration').textContent;
+      const difficulty = card.querySelector('.difficulty').textContent;
+
+      // Remplir la modale avec les infos
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalImage').src = imgSrc;
+      document.getElementById('modalType').textContent = type;
+      document.getElementById('modalDuration').textContent = duration;
+      document.getElementById('modalDifficulty').textContent = difficulty;
+
+      // Afficher la modale
+      document.getElementById('recipeModal').style.display = 'block';
+    });
+  });
+
+  // Fermer la modale
+  document.querySelector('.modal .close').addEventListener('click', () => {
+    document.getElementById('recipeModal').style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+      document.getElementById('recipeModal').style.display = 'none';
+    }
+  });
+</script>
+
     <script src="js/script.js"></script>
     <footer>
       <hr width="75%" color="orange" />
