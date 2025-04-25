@@ -33,9 +33,11 @@ menuBtn.addEventListener('click', function() {
 
 
 //!  ===== Like  ===== //
+
 const coeurs = document.querySelectorAll(".coeur");
 
-// Récupérer les favoris existants une fois pour tous
+//!  Récupérer les favoris existants une fois pour tous //
+
 let favorites = JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
 
 // Initialisation : colorer les cœurs qui sont déjà en favoris
