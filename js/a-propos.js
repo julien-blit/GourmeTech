@@ -54,6 +54,66 @@ for (let i = 0; i < items.length; i++) {
 
 //! formulaire
 
+document.querySelectorAll('.custom-form input, .custom-form textarea').forEach((field) => {
+  field.addEventListener('input', () => {
+    if (field.validity.valid) {
+      field.style.borderColor = 'green'; // Bordure verte pour valide
+      const errorMessage = field.nextElementSibling;
+      if (errorMessage && errorMessage.classList.contains('error-message')) {
+        errorMessage.remove(); // Supprimer le message d'erreur si valide
+      }
+    } else {
+      field.style.borderColor = 'red'; // Bordure rouge pour invalide
+      if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('error-message')) {
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('error-message');
+        if (field.id === 'email' && field.type === 'email') {
+          errorMessage.textContent = '⚠️ Email invalide';
+        } else if (field.id === 'name' && field.type === 'text') {
+          errorMessage.textContent = '⚠️ Le nom est trop court';
+        } else if (field.id === 'message') {
+          errorMessage.textContent = '⚠️ Message trop court';
+        }
+        field.parentNode.appendChild(errorMessage);
+      }
+    }
+  });
+});
+
+const form = document.querySelector('.custom-form');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); // Empêcher l'envoi pour validation
+
+  const nameField = document.getElementById('name');
+  const emailField = document.getElementById('email');
+  const messageField = document.getElementById('message');
+  
+  // Validation du champ nom
+  if (nameField.value.length < 2) {
+    alert('⚠️ Le nom est trop court');
+    nameField.style.borderColor = 'red';
+    return;
+  }
+
+  // Validation de l'email
+  if (!emailField.value || !emailField.checkValidity()) {
+    alert('⚠️ L\'email n\'est pas valide');
+    emailField.style.borderColor = 'red';
+    return;
+  }
+
+  // Validation du message
+  if (messageField.value.length < 10) {
+    alert('⚠️ Le message est trop court');
+    messageField.style.borderColor = 'red';
+    return;
+  }
+
+  // Si tout est valide, tu peux envoyer le formulaire ici
+  alert('Formulaire envoyé avec succès ✅');
+  form.reset(); // Réinitialiser le formulaire après soumission
+});
 
 
 

@@ -170,8 +170,7 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
   const stars = notation.querySelectorAll('.star');
   const storageKey = `notation-${notationIndex}`;
 
-  // ! Recharger la note sauvegardée
-
+  //!  Recharger la note  
   const savedNote = parseInt(localStorage.getItem(storageKey));
   if (!isNaN(savedNote)) {
     for (let i = 0; i < savedNote; i++) {
@@ -182,25 +181,27 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
 
   stars.forEach((star, index) => {
     star.addEventListener('click', () => {
-      stars.forEach(s => s.classList.remove('selected'));
+      const currentNote = parseInt(notation.getAttribute('data-notation')) || 0;
+      const newNote = index + 1;
 
-      //!  Ajouter les étoiles sélectionnées
-
-      for (let i = 0; i <= index; i++) {
-        stars[i].classList.add('selected');
+      if (currentNote === newNote) {
+        //!  Même note=>reset
+        stars.forEach(s => s.classList.remove('selected'));
+        localStorage.removeItem(storageKey);
+        notation.removeAttribute('data-notation');
+        console.log("Notation réinitialisée.");
+      } else {
+        //!  Nouvelle note => mise à jour
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i <= index; i++) {
+          stars[i].classList.add('selected');
+        }
+        localStorage.setItem(storageKey, newNote);
+        notation.setAttribute('data-notation', newNote);
+        console.log("Note donnée :", newNote);
       }
-
-      //! Récupérer la note 
-      const note = index + 1;
-
-      // !  Sauvegarder la note
-
-      localStorage.setItem(storageKey, note);
-      notation.setAttribute('data-notation', note);
-      console.log("Note donnée :", note);
     });
   });
 });
-
 
 

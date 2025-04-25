@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/a-propos.css" />
     <title>GourmeTech</title>
   </head>
@@ -14,11 +17,10 @@
       <div>
         <nav>
           <div class="logo-title">
-            <div class="logo"><a href="index.html">
-              <span class="letter">G</span></a>
+            <div class="logo">
+              <a href="index.html"> <span class="letter">G</span></a>
             </div>
-            <a href="index.html">
-            <h1 class="title">GourmeTech</h1></a>
+            <a href="index.html"> <h1 class="title">GourmeTech</h1></a>
           </div>
           <button class="menu-toggle" id="btn">☰</button>
           <ul class="nav-links" id="nav-links">
@@ -68,6 +70,7 @@
         <div class="form-container">
           <form class="custom-form">
             <h1>Contact</h1>
+
             <div class="form-group">
               <label for="name">Nom<span class="required">*</span></label>
               <input
@@ -80,18 +83,18 @@
                 maxlength="10"
               />
             </div>
+
             <div class="form-group">
-              <label for="prenom">Prénom<span class="required">*</span></label>
+              <label for="email">Email<span class="required">*</span></label>
               <input
-                type="text"
-                id="prenom"
-                name="FirstName"
-                placeholder="Votre prénom"
+                type="email"
+                id="email"
+                name="Email"
+                placeholder="Votre email"
                 required
-                minlength="2"
-                maxlength="10"
               />
             </div>
+
             <div class="form-group">
               <label for="message"
                 >Message<span class="required">*</span></label
@@ -105,7 +108,9 @@
                 maxlength="150"
               ></textarea>
             </div>
+
             <p>Champs obligatoire <span class="required">*</span></p>
+
             <div class="form-group">
               <button type="submit" class="btn">Envoyer</button>
             </div>
