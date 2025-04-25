@@ -54,27 +54,27 @@ for (let i = 0; i < items.length; i++) {
 
 //! formulaire
 
-document.querySelectorAll('.custom-form input, .custom-form textarea').forEach((field) => {
-  field.addEventListener('input', () => {
-    if (field.validity.valid) {
-      field.style.borderColor = 'green'; // Bordure verte pour valide
-      const errorMessage = field.nextElementSibling;
+document.querySelectorAll('.custom-form input, .custom-form textarea').forEach((champ) => {
+  champ.addEventListener('input', () => {
+    if (champ.validity.valid) {
+      champ.style.borderColor = 'green'; // Bordure verte pour valide
+      const errorMessage = champ.nextElementSibling;
       if (errorMessage && errorMessage.classList.contains('error-message')) {
         errorMessage.remove(); // Supprimer le message d'erreur si valide
       }
     } else {
-      field.style.borderColor = 'red'; // Bordure rouge pour invalide
-      if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('error-message')) {
+      champ.style.borderColor = 'red'; // Bordure rouge pour invalide
+      if (!champ.nextElementSibling || !champ.nextElementSibling.classList.contains('error-message')) {
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('error-message');
-        if (field.id === 'email' && field.type === 'email') {
+        if (champ.id === 'email' && champ.type === 'email') {
           errorMessage.textContent = '⚠️ Email invalide';
-        } else if (field.id === 'name' && field.type === 'text') {
+        } else if (champ.id === 'name' && champ.type === 'text') {
           errorMessage.textContent = '⚠️ Le nom est trop court';
-        } else if (field.id === 'message') {
+        } else if (champ.id === 'message') {
           errorMessage.textContent = '⚠️ Message trop court';
         }
-        field.parentNode.appendChild(errorMessage);
+        champ.parentNode.appendChild(errorMessage);
       }
     }
   });
@@ -85,28 +85,28 @@ const form = document.querySelector('.custom-form');
 form.addEventListener('submit', function (e) {
   e.preventDefault(); // Empêcher l'envoi pour validation
 
-  const nameField = document.getElementById('name');
-  const emailField = document.getElementById('email');
-  const messageField = document.getElementById('message');
+  const namechamp = document.getElementById('name');
+  const emailchamp = document.getElementById('email');
+  const messagechamp = document.getElementById('message');
   
   // Validation du champ nom
-  if (nameField.value.length < 2) {
+  if (namechamp.value.length < 2) {
     alert('⚠️ Le nom est trop court');
-    nameField.style.borderColor = 'red';
+    namechamp.style.borderColor = 'red';
     return;
   }
 
   // Validation de l'email
-  if (!emailField.value || !emailField.checkValidity()) {
+  if (!emailchamp.value || !emailchamp.checkValidity()) {
     alert('⚠️ L\'email n\'est pas valide');
-    emailField.style.borderColor = 'red';
+    emailchamp.style.borderColor = 'red';
     return;
   }
 
   // Validation du message
-  if (messageField.value.length < 10) {
+  if (messagechamp.value.length < 10) {
     alert('⚠️ Le message est trop court');
-    messageField.style.borderColor = 'red';
+    messagechamp.style.borderColor = 'red';
     return;
   }
 
