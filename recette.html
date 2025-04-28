@@ -212,7 +212,7 @@
         <div id="detail-recette" class="fiche-recette hidden">
           <h1 id="recette-titre"></h1>
           <div class="recette-header" style="position: relative">
-            <span id="coeur-detail" class="coeur" style="z-index: 2"></span>
+             <span id="coeur-detail" class="coeur" style="z-index: 2"></span>
             <img id="recette-image" src="" alt="Image recette" class="recette-img" />
             <div class="infos-recette">
               <p id="recette-categorie"></p>
@@ -271,9 +271,7 @@
           container.innerHTML += `
           <div class="card">
             <div class="img-container">
-              <span class="coeur ${isFav ? "active" : ""}" data-id="${r.id}">${
-            isFav ? "❤️" : "🤍"
-          }</span>
+              
               <img class="card-img" src="${r.image}" alt="${r.titre}">
             </div>
             <h3>${r.titre}</h3>
@@ -287,6 +285,7 @@
             }')">Voir la recette</button>
           </div>`;
         });
+// ligne 274 <span class="coeur ${isFav ? "active" : ""}" data-id="${r.id}">${  isFav ? "❤️" : "🤍"          } </span> 
 
         // après la recharge, le cœur est activé
         document.querySelectorAll(".coeur").forEach((coeur) => {
