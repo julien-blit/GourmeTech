@@ -218,7 +218,7 @@ h4 {
       <div class="recipe-details-container">
         <button onclick="closeRecipeDetails()">Fermer</button>
         <h2 id="recipe-title"></h2>
-        <div class="img-container">
+        <div class="img-container img">
          <!-- <span class="coeur">🤍</span>--> 
           <img id="recipe-image" src="" alt="" class="card-img" /> 
         </div>
@@ -414,8 +414,10 @@ function closeRecipeDetails() {
         const title = normalizeText(card.querySelector(".recipe-title").textContent);
         const category = normalizeText(card.querySelector(".type").textContent);
         const duration = card.querySelector(".duration").textContent;
-        const difficulty = normalizeText(card.querySelector(".difficulty").textContent);
-  
+        const difficulty = normalizeText(card.querySelector(".difficulty").textContent); 
+       
+
+ 
         let durationValue = parseInt(duration);
         let matchesQuery = title.includes(query);
         let matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
@@ -424,8 +426,9 @@ function closeRecipeDetails() {
           if (time === "15-30") return durationValue >= 15 && durationValue <= 30;
           if (time === "+30") return durationValue > 30;
         });
-        let matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
-  
+       let matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.some(difficultyOption => 
+      normalizeText(difficultyOption) === difficulty
+    );
         if (matchesQuery && matchesCategory && matchesTime && matchesDifficulty) {
           card.style.display = "";
           anyVisible = true;

@@ -36,11 +36,11 @@ menuBtn.addEventListener('click', function() {
 
 const coeurs = document.querySelectorAll(".coeur");
 
-//!  Récupérer les favoris existants une fois pour tous //
+
 
 let favorites = JSON.parse(localStorage.getItem("favoriteRecipes")) || [];
 
-// Initialisation : colorer les cœurs qui sont déjà en favoris
+
 coeurs.forEach((coeur) => {
   const card = coeur.closest('.card');
   const title = card.querySelector(".recipe-title").textContent;
@@ -107,9 +107,6 @@ document.querySelector('.search-button').addEventListener('click', () => {
   const noResult = document.querySelector('.no-result'); 
 
 
- 
-
-
   //!  ===== Récupération des filtres cochés =====//
   
   const Checked = (name) =>                            // ? recuperation en liste 
@@ -164,6 +161,13 @@ document.querySelector('.search-button').addEventListener('click', () => {
   noResult.style.display = result === 0 ? 'block' : 'none';
 });
 
+
+
+
+
+
+
+
 //! ===== etoiles ===== //
 
 document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
@@ -205,3 +209,9 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
 });
 
 
+// ! galerie ilg
+
+function changeImage(thumbnail, containerIndex) {
+  const mainImage = document.getElementById('main-image' + containerIndex);
+  mainImage.src = thumbnail.src;
+}
