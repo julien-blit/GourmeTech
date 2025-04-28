@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"    />
@@ -53,7 +53,8 @@ h4 {
   margin-top: 20px;
 }
 
-/* Style des cartes de recette */
+/* ! Style des cartes de recette */
+
 .card {
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -63,7 +64,7 @@ h4 {
 }
 
 .card:hover {
-  transform: scale(1.05); /* Agrandir légèrement la carte au survol */
+  transform: scale(1.05); 
 }
 
 .card .img-container {
@@ -103,6 +104,45 @@ h4 {
 
 .card .btn:hover {
   background-color: #ff5722;
+}
+
+/* ! Responsive design */
+
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr; 
+  }
+
+  .recipe-details-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #recipe-title {
+    font-size: 1.5rem;
+  }
+
+  #recipe-description {
+    font-size: 0.9rem;
+  }
+
+  .card .img-container {
+    height: 150px; 
+  }
+
+  .card .recipe-title {
+    font-size: 1rem;
+  }
+
+  .card .description {
+    font-size: 0.9rem;
+  }
 }
 </style>
     <title>GourmeTech</title>

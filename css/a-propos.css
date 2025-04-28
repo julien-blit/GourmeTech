@@ -429,6 +429,7 @@ p {
     .parent {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 
     .description {
@@ -475,6 +476,12 @@ p {
 
     .logo-title {
         flex: 1;
+    }
+
+    .parent {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .nav-links a {
