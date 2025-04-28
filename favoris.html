@@ -219,7 +219,7 @@ h4 {
         <button onclick="closeRecipeDetails()">Fermer</button>
         <h2 id="recipe-title"></h2>
         <div class="img-container">
-          <span class="coeur">🤍</span>
+         <!-- <span class="coeur">🤍</span>--> 
           <img id="recipe-image" src="" alt="" class="card-img" /> 
         </div>
         <!-- <img id="recipe-image" src="" alt="" class="card-img" /> -->
@@ -391,6 +391,57 @@ function closeRecipeDetails() {
 }
 
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(".search-input");
+    const filterInputs = document.querySelectorAll(".filter-container input");
+    const noResultDiv = document.querySelector(".no-result");
+  
+    function normalizeText(text) {
+      return text.toLowerCase().trim();
+    }
+  
+    function applyFilters() {
+      const query = normalizeText(searchInput.value);
+      const selectedCategories = Array.from(document.querySelectorAll("input[name='category']:checked")).map(cb => cb.value);
+      const selectedTimes = Array.from(document.querySelectorAll("input[name='time']:checked")).map(cb => cb.value);
+      const selectedDifficulties = Array.from(document.querySelectorAll("input[name='difficulty']:checked")).map(cb => cb.value);
+  
+      let anyVisible = false;
+  
+      document.querySelectorAll("#favorites-container .card").forEach(card => {
+        const title = normalizeText(card.querySelector(".recipe-title").textContent);
+        const category = normalizeText(card.querySelector(".type").textContent);
+        const duration = card.querySelector(".duration").textContent;
+        const difficulty = normalizeText(card.querySelector(".difficulty").textContent);
+  
+        let durationValue = parseInt(duration);
+        let matchesQuery = title.includes(query);
+        let matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
+        let matchesTime = selectedTimes.length === 0 || selectedTimes.some(time => {
+          if (time === "-15") return durationValue < 15;
+          if (time === "15-30") return durationValue >= 15 && durationValue <= 30;
+          if (time === "+30") return durationValue > 30;
+        });
+        let matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
+  
+        if (matchesQuery && matchesCategory && matchesTime && matchesDifficulty) {
+          card.style.display = "";
+          anyVisible = true;
+        } else {
+          card.style.display = "none";
+        }
+      });
+  
+      noResultDiv.style.display = anyVisible ? "none" : "block";
+    }
+  
+    // Attacher les événements
+    searchInput.addEventListener("input", applyFilters);
+    filterInputs.forEach(input => input.addEventListener("change", applyFilters));
+  });
+  </script>
 
   <script src="js/script.js"></script>
     <footer>
