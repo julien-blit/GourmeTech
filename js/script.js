@@ -189,12 +189,14 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
       const newNote = index + 1;
 
       if (currentNote === newNote) {
+
         //!  Même note=>reset
         stars.forEach(s => s.classList.remove('selected'));
         localStorage.removeItem(storageKey);
         notation.removeAttribute('data-notation');
         console.log("Notation réinitialisée.");
       } else {
+
         //!  Nouvelle note => mise à jour
         stars.forEach(s => s.classList.remove('selected'));
         for (let i = 0; i <= index; i++) {

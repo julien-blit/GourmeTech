@@ -60,10 +60,10 @@ document.querySelectorAll('.custom-form input, .custom-form textarea').forEach((
       champ.style.borderColor = 'green'; // Bordure verte pour valide
       const errorMessage = champ.nextElementSibling;
       if (errorMessage && errorMessage.classList.contains('error-message')) {
-        errorMessage.remove(); // Supprimer le message d'erreur si valide
+        errorMessage.remove(); 
       }
     } else {
-      champ.style.borderColor = 'red'; // Bordure rouge pour invalide
+      champ.style.borderColor = 'red'; 
       if (!champ.nextElementSibling || !champ.nextElementSibling.classList.contains('error-message')) {
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('error-message');
@@ -83,38 +83,38 @@ document.querySelectorAll('.custom-form input, .custom-form textarea').forEach((
 const form = document.querySelector('.custom-form');
 
 form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Empêcher l'envoi pour validation
+  e.preventDefault(); //?  Empêcher l'envoi pour validation
 
   const namechamp = document.getElementById('name');
   const emailchamp = document.getElementById('email');
   const messagechamp = document.getElementById('message');
-  
-  // Validation du champ nom
+
+  //! Validation du champ nom
   if (namechamp.value.length < 2) {
     alert('⚠️ Le nom est trop court');
     namechamp.style.borderColor = 'red';
     return;
   }
 
-  // Validation de l'email
-  if (!emailchamp.value || !emailchamp.checkValidity()) {
+  //!  Validation de l'email avec l'expression régulière
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailchamp.value || !emailRegex.test(emailchamp.value)) {
     alert('⚠️ L\'email n\'est pas valide');
     emailchamp.style.borderColor = 'red';
     return;
   }
 
-  // Validation du message
+  //! Validation du message
   if (messagechamp.value.length < 10) {
     alert('⚠️ Le message est trop court');
     messagechamp.style.borderColor = 'red';
     return;
   }
 
-  // Si tout est valide, tu peux envoyer le formulaire ici
+  //! Si tout est valide, tu peux envoyer le formulaire ici
   alert('Formulaire envoyé avec succès ✅');
   form.reset(); // Réinitialiser le formulaire après soumission
 });
-
 
 
 
