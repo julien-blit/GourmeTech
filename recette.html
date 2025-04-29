@@ -8,163 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"/>
     <link rel="stylesheet" href="css/index.css" />
-    <style>
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 10;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.6);
-      }
+    <link rel="stylesheet" href="css/favoris.css" />
 
-      .modal-content {
-        background-color: #fff;
-        margin: 10% auto;
-        padding: 1rem 2rem;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 600px;
-        border-radius: 10px;
-        position: relative;
-      }
-
-      .close {
-        color: #aaa;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      .close:hover {
-        color: black;
-      }
-
-
-      .card,
-      .fiche-recette,
-      .favori {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin: 10px 0;
-      }
-      .card-img,
-      .recette-img {
-        width: 100%;
-        max-width: 300px;
-        border-radius: 8px;
-      }
-      .content-center {
-        display: flex;
-        min-width: 90%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .fiche-recette {
-        display: flex;
-        min-width: 90%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .detail-recette {
-        display: flex;
-        min-width: 90%;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .card {
-        width: 275px;
-        border-radius: 8px;
-      }
-      .hidden {
-        display: none;
-      }
-      .favori {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .favori img {
-        width: 100px;
-      }
-      .tag {
-        display: inline-block;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 0.8em;
-        font-weight: bold;
-        color: white;
-        margin: 2px;
-      }
-
-      .tag.orange {
-        background-color: orange;
-      }
-
-      .tag.green {
-        background-color: #28a745;
-      }
-
-      .tag.blue {
-        background-color: #007bff;
-      }
-
-      .btn-orange {
-        background-color: orange;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 2px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.2s ease;
-        text-align: center;
-      }
-
-      .btn-orange:hover {
-        background-color: darkorange;
-      }
-      .card button {
-        display: block;
-        margin: 10px auto 0; /* espace au-dessus et centré */
-        text-align: center;
-      }
-
-      .coeur {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-      .coeur.active {
-        transform: scale(1.3);
-      }
-      .recette-header .coeur {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 26px;
-        z-index: 3;
-      }
-
-    </style>
     <title>GourmeTech</title>
   </head>
   <body>
@@ -297,9 +142,9 @@
               recette.titre,
               recette.image
             );
-            coeur.classList.toggle("active");
-            coeur.textContent = estAjouté ? "❤️" : "🤍";
-            afficherFavoris();
+           // coeur.classList.toggle("active");
+           // coeur.textContent = estAjouté ? "❤️" : "🤍";
+           // afficherFavoris();
           });
         });
 
@@ -337,19 +182,12 @@
         document.getElementById("page-title").textContent = r.titre;
         document.getElementById("recette-titre").textContent = r.titre;
         document.getElementById("recette-image").src = r.image;
-        document.getElementById("recette-categorie").textContent =
-          "Catégorie : " + r.categorie;
-        document.getElementById("recette-temps").textContent =
-          "Temps : " + r.temps;
-        document.getElementById("recette-difficulte").textContent =
-          "Difficulté : " + r.difficulte;
+        document.getElementById("recette-categorie").textContent ="Catégorie : " + r.categorie;
+        document.getElementById("recette-temps").textContent ="Temps : " + r.temps;
+        document.getElementById("recette-difficulte").textContent ="Difficulté : " + r.difficulte;
 
-        document.getElementById("liste-ingredients").innerHTML = r.ingredients
-          .map((i) => `<li>${i}</li>`)
-          .join("");
-        document.getElementById("liste-instructions").innerHTML = r.instructions
-          .map((i) => `<li>${i}</li>`)
-          .join("");
+        document.getElementById("liste-ingredients").innerHTML = r.ingredients.map((i) => `<li>${i}</li>`).join("");
+        document.getElementById("liste-instructions").innerHTML = r.instructions.map((i) => `<li>${i}</li>`).join("");
 
         const coeurDetail = document.getElementById("coeur-detail");
         const estFav = estFavori(r.id);
@@ -401,14 +239,13 @@
           .map(
             (fav) => `
           <div class="recette-header" style="position: relative;">  
-          <div class="favori"> 
-              <img id="recette-image" src="${fav.image}" alt="${fav.titre}" class="card-img" >         
-              <strong>${fav.titre}</strong>         
-          </div></div>`
-          )
-          .join("");
+            <div class="favori"> 
+                <img id="recette-image" src="${fav.image}" alt="${fav.titre}" class="card-img" >         
+                <strong>${fav.titre}</strong>         
+            </div>
+          </div>`
+          ).join("");
         // <button onclick="retirerFavori('${fav.id}')">❌</button>
-
         msgVide.style.display = favoris.length ? "none" : "block";
       }
 
@@ -433,8 +270,7 @@
         );
 
         // Change le titre de la page en "Mes Recettes Favorites"
-        document.getElementById("page-title").textContent =
-          "Mes Recettes Favorites ❤️";
+        document.getElementById("page-title").textContent = "Mes Recettes Favorites ❤️";
         document.getElementById("champ-recherche").value = ""; // Vide le champ de recherche
         chargerListeRecettes(recettesFavoris); // Affiche les recettes favorites
       });
@@ -456,8 +292,7 @@
             );
 
             // Met à jour le titre de la page
-            document.getElementById("page-title").textContent =
-              "Mes Recettes Favorites ❤️";
+            document.getElementById("page-title").textContent ="Mes Recettes Favorites ❤️";
 
             // Vide le champ de recherche
             document.getElementById("champ-recherche").value = "";
@@ -466,9 +301,7 @@
             chargerListeRecettes(recettesFavoris);
 
             // Masque la liste des recettes favorites, affiche toutes les recettes
-            document
-              .getElementById("liste-recettes")
-              .classList.remove("hidden");
+            document.getElementById("liste-recettes").classList.remove("hidden");
             document.getElementById("detail-recette").classList.add("hidden");
           });
 
@@ -478,8 +311,7 @@
           e.preventDefault(); // // Empêche le comportement par défaut du lien
 
           // Met à jour le titre de la page
-          document.getElementById("page-title").textContent =
-            "Toutes les Recettes";
+          document.getElementById("page-title").textContent ="Toutes les Recettes";
 
           // Vide le champ de recherche
           document.getElementById("champ-recherche").value = "";
@@ -502,20 +334,13 @@
         // Mise à jour de la section #detail-recette
         document.getElementById("recette-titre").textContent = r.titre;
         document.getElementById("recette-image").src = r.image;
-        document.getElementById("recette-categorie").textContent =
-          "Catégorie : " + r.categorie;
-        document.getElementById("recette-temps").textContent =
-          "Temps de préparation : " + r.temps;
-        document.getElementById("recette-difficulte").textContent =
-          "Difficulté : " + r.difficulte;
+        document.getElementById("recette-categorie").textContent ="Catégorie : " + r.categorie;
+        document.getElementById("recette-temps").textContent ="Temps de préparation : " + r.temps;
+        document.getElementById("recette-difficulte").textContent = "Difficulté : " + r.difficulte;
 
         // Mise à jour des ingrédients et des étapes
-        document.getElementById("liste-ingredients").innerHTML = r.ingredients
-          .map((i) => `<ul>${i}</ul>`)
-          .join("");
-        document.getElementById("liste-instructions").innerHTML = r.instructions
-          .map((i) => `<ul>${i}</ul>`)
-          .join("");
+        document.getElementById("liste-ingredients").innerHTML = r.ingredients.map((i) => `<ul>${i}</ul>`).join("");
+        document.getElementById("liste-instructions").innerHTML = r.instructions.map((i) => `<ul>${i}</ul>`).join("");
 
         // Gestion des favoris
         const coeurDetail = document.getElementById("coeur-detail");
