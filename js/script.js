@@ -211,9 +211,35 @@ document.querySelectorAll('.notation').forEach((notation, notationIndex) => {
 });
 
 
-// ! galerie ilg
+// ! galerie img
 
-function changeImage(thumbnail, containerIndex) {
-  const mainImage = document.getElementById('main-image' + containerIndex);
-  mainImage.src = thumbnail.src;
-}
+  function changeImage(thumbnail, containerIndex) {
+    const mainImage = document.getElementById('main-image' + containerIndex);
+    mainImage.src = thumbnail.src;
+
+    //!  Récupère toutes les miniatures du bon conteneur
+    const thumbnails = document.querySelectorAll('.thumbnails' + containerIndex + ' img');
+
+    thumbnails.forEach(img => {
+      if (img.src === mainImage.src) {
+        img.style.display = 'none'; 
+      } else {
+        img.style.display = ''; 
+      }
+    });
+  }
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    [1, 2, 3].forEach(index => {
+      const mainImage = document.getElementById('main-image' + index);
+      const thumbnails = document.querySelectorAll('.thumbnails' + index + ' img');
+      thumbnails.forEach(img => {
+        if (img.src === mainImage.src) {
+          img.style.display = 'none';
+        } else {
+          img.style.display = '';
+        }
+      });
+    });
+  });

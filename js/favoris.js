@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
           heart.textContent = "🤍"; // Coeur vide si recette n'est pas favorite
         }
       });
-    };
-  
+  };
+ 
     // Sauvegarder les favoris dans le localStorage
     const saveFavorites = (favorites) => {
       localStorage.setItem("favorites", JSON.stringify(favorites));

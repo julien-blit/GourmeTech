@@ -174,3 +174,4 @@ function filtrer(type) {
 }
 
 document.addEventListener("DOMContentLoaded", () => afficherRecettes());
+

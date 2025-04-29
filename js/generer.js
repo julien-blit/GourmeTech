@@ -84,3 +84,31 @@ document.getElementById("recette-category").textContent = repas.strCategory;
 
   //!  Recharger une recette quand on clique sur le bouton
   document.getElementById("new-recette-btn").addEventListener("click", loadRecette);
+
+
+
+//? partager la recette
+  
+
+const titreEl = document.querySelector("#recette-title");
+const articlesEl = document.querySelector("#ingredients-list");
+const prepaEl = document.querySelector("#instructions");
+
+const btnshare = document.getElementById("partage");
+
+btnshare.addEventListener("click", function () {
+   const titre = titreEl.textContent;
+  const articles = articlesEl.textContent;
+  const prepa = prepaEl.textContent;
+
+  const recetteText = `Titre : ${titre}\nIngrédients : ${articles}\nPréparation : ${prepa}`;
+  
+  if (navigator.share) {
+  navigator.share({
+    title:document.title,
+    text: "regarde cette recette",
+    url: "https://julien-blit.github.io/GourmeTech/generer.html"
+  })
+  
+}
+})
