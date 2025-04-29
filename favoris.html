@@ -9,6 +9,7 @@
       rel="stylesheet"/>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/favoris.css" />
+    <link rel="stylesheet" href="css/print.css" media="print" />
     <title>GourmeTech</title>
   </head>
   <body>
@@ -24,7 +25,7 @@
           </div>
           <button class="menu-toggle" id="btn">☰</button>
           <ul class="nav-links" id="nav-links">
-            <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+            <li><a href="ajouter-recettes.html">Ajouter Recette</a></li>
             <li><a href="favoris.html">Mes Favoris</a></li>
             <li><a href="generer.html">Recettes Aléatoire</a></li>
             <li><a href="a-propos.html">À Propos</a></li>
@@ -81,6 +82,7 @@
         <p><strong>Catégorie :</strong> <span id="modalType"></span></p>
         <p><strong>Durée :</strong> <span id="modalDuration"></span></p>
         <p><strong>Difficulté :</strong> <span id="modalDifficulty"></span></p>
+        <p><strong>Instruction :</strong> <span id="modalDescription"></span></p>
       </div>
     </div>
 
@@ -92,16 +94,17 @@
     </div>
     <div id="recipe-details">
       <div class="recipe-details-container">
-        <button onclick="closeRecipeDetails()">Fermer</button>
+        <button class="btn" onclick="closeRecipeDetails()">Fermer</button>
+        <button class="btn" onclick="window.print()">Imprimer la recette</button>
         <h2 id="recipe-title"></h2>
         <div class="img-container">
          <!-- <span class="coeur">🤍</span>--> 
           <img id="recipe-image" src="" alt="" class="card-img" /> 
         </div>
         <!-- <img id="recipe-image" src="" alt="" class="card-img" /> -->
-        <p id="recipe-description"></p>
+        <p id="recipe-ingredients">Ingredients:</p>
+        <p id="recipe-description">Instruction:</p>
         <p id="recipe-temps"></p>
-        <p id="recipe-ingredients">Ingredients: </p>
         <!-- details-->
       </div>
     </div>
