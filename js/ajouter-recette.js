@@ -184,3 +184,66 @@ function filtrer(type) {
   afficherRecettes(type);
 }
 
+// Copier la recette (titre + ingrédients + instructions)
+function copierRecette() {
+  const titre = document.getElementById("recette-titre").textContent;
+  const ingredients = Array.from(document.querySelectorAll("#liste-ingredients li"))
+    .map(li => "- " + li.textContent)
+    .join("\n");
+  const instructions = Array.from(document.querySelectorAll("#liste-instructions li"))
+    .map((li, i) => `${i + 1}. ${li.textContent}`)
+    .join("\n");
+
+  const texte = `Recette : ${titre}\n\nIngrédients :\n${ingredients}\n\nInstructions :\n${instructions}`;
+
+  navigator.clipboard.writeText(texte).then(() => {
+    alert("Recette copiée !");
+  }).catch(err => {
+    alert("Erreur lors de la copie : " + err);
+  });
+}
+
+// Exporter la recette en PDF
+function telechargerPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const titre = document.getElementById("recette-titre").textContent;
+  const categorie = document.getElementById("recette-categorie").textContent;
+  const temps = document.getElementById("recette-temps").textContent;
+  const difficulte = document.getElementById("recette-difficulte").textContent;
+
+  const ingredients = Array.from(document.querySelectorAll("#liste-ingredients li"))
+    .map(li => "- " + li.textContent)
+    .join("\n");
+
+  const instructions = Array.from(document.querySelectorAll("#liste-instructions li"))
+    .map((li, i) => `${i + 1}. ${li.textContent}`)
+    .join("\n");
+
+  let y = 10;
+  doc.setFontSize(14);
+  doc.text(`Recette : ${titre}`, 10, y); y += 10;
+  doc.setFontSize(10);
+  doc.text(`Catégorie : ${categorie}`, 10, y); y += 6;
+  doc.text(`Temps : ${temps}`, 10, y); y += 6;
+  doc.text(`Difficulté : ${difficulte}`, 10, y); y += 10;
+
+  doc.setFontSize(12);
+  doc.text("Ingrédients :", 10, y); y += 8;
+  doc.setFontSize(10);
+  doc.text(ingredients, 10, y); y += ingredients.split("\n").length * 6 + 6;
+
+  doc.setFontSize(12);
+  doc.text("Instructions :", 10, y); y += 8;
+  doc.setFontSize(10);
+  doc.text(instructions, 10, y);
+
+  doc.save(`${titre}.pdf`);
+}
+
+function imprimerRecette() {
+  const fiche = document.getElementById("fiche-recette");
+  fiche.classList.remove("hidden");
+  window.print();
+}
