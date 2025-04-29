@@ -1,3 +1,32 @@
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border: 6px solid darkorange;
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); } /* Rotation infinie */
+}
+
+
 .hidden {
   display: none;
 }
@@ -35,7 +64,6 @@ body.dark-mode .btn:hover {
   background-color: #ff9800;
 }
 
-
 /* Pour le champ de recherche et les filtres */
 body.dark-mode input::placeholder {
   color: #ccc;
@@ -50,7 +78,6 @@ body.dark-mode .btn-orange {
 body.dark-mode .btn-orange:hover {
   background-color: #e67600;
 }
-
 
 body.dark-mode .tag.orange {
   background-color: #ff9800;
@@ -94,8 +121,10 @@ h5 {
 .card-img,
 .recette-img {
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   border-radius: 8px;
+  padding: 5px;
+  margin: 10px 0;
 }
 
 .content-center {
@@ -114,14 +143,10 @@ h5 {
 }
 
 .card {
-  width: 275px;
+  width: 30%;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-}
-
-.hidden {
-  display: none;
 }
 
 .favori {
@@ -199,8 +224,6 @@ h5 {
   z-index: 3;
 }
 
-
-
 .form-container {
   display: flex;
   flex-direction: column;
@@ -241,7 +264,6 @@ h5 {
   font-size: 1.1rem;
   color: inherit;
 }
-
 
 #form-recette label>input,
 #form-recette label>select,
@@ -298,9 +320,148 @@ form#form-recette button:active {
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+  border-radius: 6px;
 }
 
 section {
   padding: 20px;
   margin-top: 20px;
+}
+
+#recipe-details {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* caché par défaut */
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-details-container {
+  background-color: darkorange;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #555;
+  width: 80%;
+  max-width: 600px;
+}
+
+#recipe-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#recipe-description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+  gap: 20px; /* Espace entre les cartes */
+  margin-top: 20px;
+}
+
+/* ! Style des cartes de recette */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); 
+}
+
+.card .img-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.card .card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .recipe-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.card .description {
+  font-size: 1rem;
+  color: #555;
+  margin: 10px;
+}
+
+.card .btn {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  background-color: #ff7f50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.card .btn:hover {
+  background-color: #ff5722;
+}
+
+/* ! Responsive design */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  #liste-recettes .card {
+    flex: 1 1 calc(50% - 40px); /* 2 cartes par ligne */
+    max-width: calc(50% - 40px);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr; 
+  }
+
+  .recipe-details-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #recipe-title {
+    font-size: 1.5rem;
+  }
+
+  #recipe-description {
+    font-size: 0.9rem;
+  }
+
+  .card .img-container {
+    height: 150px; 
+  }
+
+  .card .recipe-title {
+    font-size: 1rem;
+  }
+
+  .card .description {
+    font-size: 0.9rem;
+  }
+  #liste-recettes .card {
+    flex: 1 1 100%; /* 1 carte par ligne */
+    max-width: 100%;
+  }
 }
