@@ -121,7 +121,7 @@ h5 {
 .card-img,
 .recette-img {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   border-radius: 8px;
   padding: 5px;
   margin: 10px 0;
@@ -391,6 +391,7 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  text-align: center;
 }
 
 .card .recipe-title {
