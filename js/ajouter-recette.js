@@ -10,7 +10,6 @@ window.onload = function() {
 };
 
 document.addEventListener("DOMContentLoaded", () => afficherRecettes());
-
 // Lorsque le formulaire est soumis
 document.getElementById("form-recette").addEventListener("submit", function (e) {
   e.preventDefault();  // Empêche le comportement par défaut (soumission du formulaire)
@@ -82,7 +81,6 @@ function afficherRecettes(filtre = "toutes") {
   if (filtre === "favoris") {
     recettesFiltrees = recettesFiltrees.filter(r => r.favori);
   }
-
   if (recettesFiltrees.length === 0) {
     container.innerHTML = "<p>Aucune recette.</p>";
   } else {
@@ -102,11 +100,9 @@ function afficherRecettes(filtre = "toutes") {
         </div>`;
       container.appendChild(div);
     });
-  }
-  
+  }  
   loader.style.display = "none"; // Cache le loader après le chargement des recettes
 }
-
 function voirRecette(id) {
   const recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
   const recette = recettes.find(r => r.id === id);
@@ -183,7 +179,6 @@ function toggleFavori(id) {
 function filtrer(type) {
   afficherRecettes(type);
 }
-
 // Copier la recette (titre + ingrédients + instructions)
 function copierRecette() {
   const titre = document.getElementById("recette-titre").textContent;
@@ -198,7 +193,6 @@ function copierRecette() {
     alert("Erreur lors de la copie : " + err);
   });
 }
-
 // Exporter la recette en PDF
 function telechargerPDF() {
   const { jsPDF } = window.jspdf;
@@ -223,7 +217,6 @@ function telechargerPDF() {
     doc.addImage(image, "JPEG", 10, y, 50, 50);
     y += 60;
   }
-
   doc.text(`Catégorie : ${categorie}`, 10, y); y += 6;
   doc.text(`Temps : ${temps}`, 10, y); y += 6;
   doc.text(`Difficulté : ${difficulte}`, 10, y); y += 10;
@@ -240,7 +233,7 @@ function telechargerPDF() {
 
   doc.save(`${titre}.pdf`);
 }
-
+//fonction imprimir recette - native js
 function imprimerRecette() {
   const fiche = document.getElementById("fiche-recette");
   fiche.classList.remove("hidden");
