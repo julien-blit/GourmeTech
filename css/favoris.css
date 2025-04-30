@@ -317,3 +317,17 @@ h4 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
+.reading-mode {
+  background-color: rgba(255, 255, 255, 0.9); /* Une couleur de fond plus légère */
+  padding: 20px;
+  overflow-y: scroll; /* Pour permettre le défilement si nécessaire */
+}
+
+/* Masquer les autres éléments lorsque le mode lecture est activé */
+.reading-mode header,
+.reading-mode footer,
+.reading-mode .general,
+.reading-mode .main-content {
+  display: none;
+}
