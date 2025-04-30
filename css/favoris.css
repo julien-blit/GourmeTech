@@ -104,9 +104,11 @@ h4 {
 .card-img,
 .recette-img {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   border-radius: 8px;
   object-fit: cover;
+  align-items: center;
+  justify-content: center;
 }
 
 .card .recipe-title {
