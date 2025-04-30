@@ -124,6 +124,7 @@ ul li a {
 }
 
 /* ! === btn changement recette =====*/
+
 button#new-recette-btn {
     background-color: var(--first-color);
     color: var(--second-color);
