@@ -1,93 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.6">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/favoris.css">
-  <title>GourmeTech</title>
-</head>
-<body>
-  <header id="top">
-    <nav>
-      <div class="logo-title">
-        <a href="index.html" class="logo"><span class="letter">G</span></a>
-        <a href="index.html"><h1 class="title">GourmeTech</h1></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/favoris.css" />
+    <link rel="icon" type="image/png" href="assets/images/logo.png" />
+    <title>GourmeTech</title>
+  </head>
+  <body>
+    <header id="top">
+      <nav>
+        <div class="logo-title">
+          <a href="index.html" class="logo"><span class="letter">G</span></a>
+          <a href="index.html"><h1 class="title">GourmeTech</h1></a>
+        </div>
+        <button class="menu-toggle" id="btn">☰</button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+          <li><a href="favoris.html">Mes Favoris</a></li>
+          <li><a href="generer.html">Recettes Aléatoire</a></li>
+          <li><a href="a-propos.html">À Propos</a></li>
+        </ul>
+        <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
+      </nav>
+    </header>
+    <section>
+      <div class="search-container">
+        <input
+          type="text"
+          id="champ-recherche"
+          placeholder="Rechercher une recette..."
+          class="search-input"
+        />
+        <button class="search-button">Rechercher</button>
       </div>
-      <button class="menu-toggle" id="btn">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
-        <li><a href="favoris.html">Mes Favoris</a></li>
-        <li><a href="generer.html">Recettes Aléatoire</a></li>
-        <li><a href="a-propos.html">À Propos</a></li>
-      </ul>
-      <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
-    </nav>
-  </header>
-  <section>
-    <div class="search-container">
-      <input type="text" id="champ-recherche" placeholder="Rechercher une recette..." class="search-input" >
-      <button class="search-button">Rechercher</button>
-    </div>
-    <div class="no-result" style="display: none; text-align: center; margin-top: 2rem">
-      <p>Aucune recette trouvée 😢</p>
-    </div>
-  </section>
-  <main class="main-content">
-    <div class="general">
-      <div class="content-center">
-        <!-- Liste des recettes -->
-        <div id="liste-recettes" class="row"></div>
-        <!-- Modal pour les détails de la recette -->
-        <div id="modal-detail-recette" class="modal">
-          <div class="modal-content">
-            <span class="close" onclick="fermerModal()">&times;</span>
-            <h2 id="recette-titre"></h2>
-            <div class="recette-header" style="position: relative">
-              <img id="recette-image" src="" alt="Image recette" class="recette-img">
-              <div class="infos-recette">
-                <p id="recette-categorie"></p>
-                <p id="recette-temps"></p>
-                <p id="recette-difficulte"></p>
+      <div
+        class="no-result"
+        style="display: none; text-align: center; margin-top: 2rem"
+      >
+        <p>Aucune recette trouvée 😢</p>
+      </div>
+    </section>
+    <main class="main-content">
+      <div class="general">
+        <div class="content-center">
+          <!-- Liste des recettes -->
+          <div id="liste-recettes" class="row"></div>
+          <!-- Modal pour les détails de la recette -->
+          <div id="modal-detail-recette" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fermerModal()">&times;</span>
+              <h2 id="recette-titre"></h2>
+              <div class="recette-header" style="position: relative">
+                <img
+                  id="recette-image"
+                  src=""
+                  alt="Image recette"
+                  class="recette-img"
+                />
+                <div class="infos-recette">
+                  <p id="recette-categorie"></p>
+                  <p id="recette-temps"></p>
+                  <p id="recette-difficulte"></p>
+                </div>
               </div>
+              <section>
+                <h2>Ingrédients</h2>
+                <ul id="liste-ingredients"></ul>
+              </section>
+              <section>
+                <h2>Étapes</h2>
+                <ul id="liste-instructions"></ul>
+              </section>
             </div>
-            <section>
-              <h2>Ingrédients</h2>
-              <ul id="liste-ingredients"></ul>
-            </section>
-            <section>
-              <h2>Étapes</h2>
-              <ul id="liste-instructions"></ul>
-            </section>           
           </div>
         </div>
       </div>
-    </div>
-  </main>
-  <script src="js/recette.js"></script>
-  <script src="js/script.js"></script>
-  <footer>
-    <hr width="100%" color="orange" >
-    <div class="footer-content">
-      <div class="aside">
-        <div class="footer-column">
-          <h2>Navigation</h2>
-          <ul>
-            <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
-            <li><a href="favoris.html">Mes favoris</a></li>
-            <li><a href="generer.html">Recettes Aléatoire</a></li>
-            <li><a href="a-propos.html">À Propos</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h2>À propos de GourmeTech</h2>
-          <h3>GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d'un projet pédagogique.</h3>
+    </main>
+    <script src="js/recette.js"></script>
+    <script src="js/script.js"></script>
+    <footer>
+      <hr width="100%" color="orange" />
+      <div class="footer-content">
+        <div class="aside">
+          <div class="footer-column">
+            <h2>Navigation</h2>
+            <ul>
+              <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
+              <li><a href="favoris.html">Mes favoris</a></li>
+              <li><a href="generer.html">Recettes Aléatoire</a></li>
+              <li><a href="a-propos.html">À Propos</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h2>À propos de GourmeTech</h2>
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires interactive
+              développée dans le cadre d'un projet pédagogique.
+            </h3>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
-    </div>
-  </footer>
-</body>
+      <div class="footer">
+        <p class="copyright">© 2025 GourmeTech - Tous droits réservés</p>
+      </div>
+    </footer>
+  </body>
 </html>
