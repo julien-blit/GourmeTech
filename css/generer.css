@@ -143,7 +143,7 @@ button#new-recette-btn:hover {
 }
 
 
-button#register {
+button#print {
     background-color: var(--first-color);
     color: var(--second-color);
     border: none;
@@ -155,7 +155,7 @@ button#register {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button#register:hover {
+button#print:hover {
     background-color: var(--second-color);
     color: var(--first-color);
     transform: scale(1.05);
@@ -164,6 +164,30 @@ button#register:hover {
 .centre {
     text-align: center;
     margin-top: 2rem;
+}
+
+.loader {
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader::after {
+    content: "";
+    width: 60px;
+    height: 60px;
+    border: 6px solid darkorange;
+    border-top: 6px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ! ====  recette ===== */
@@ -473,7 +497,7 @@ body.dark-mode button#new-recette-btn:hover {
     transform: scale(1.05);
 }
 
-body.dark-mode button#register:hover {
+body.dark-mode button#print:hover {
     background-color: var(--dark-mode);
     color: var(--first-color);
     transform: scale(1.05);
@@ -500,4 +524,34 @@ body.dark-mode .footer {
     padding: 1rem;
     border-top: 1px solid var(--dark-mode);
     border-radius: 15px;
+}
+
+
+
+/* ! Impresson de la recette  */
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #recipe-container,
+    #recipe-container * {
+        visibility: visible;
+    }
+
+    #recipe-container {
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        display: none !important;
+    }
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.getElementById("form-recette").addEventListener("submit", function(e) {
   e.preventDefault();
   const form = e.target;
@@ -176,7 +175,6 @@ function filtrer(type) {
 
 document.addEventListener("DOMContentLoaded", () => afficherRecettes());
 
-=======
 // Affiche le loader dès le chargement de la page
 window.onload = function() {
   const loader = document.getElementById("loader");
@@ -426,4 +424,3 @@ function imprimerRecette() {
   fiche.classList.remove("hidden");
   window.print();
 }
->>>>>>> ce7601a1bece5d93709cca1cf0f35da5719ac0b1

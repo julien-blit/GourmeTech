@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/generer.css" />
   </head>
   <body>
+    <div id="loader" class="loader" style="display: none;"></div>
     <header id="top">
       <div>
         <nav>
@@ -33,9 +34,10 @@
         </nav>
       </div>
     </header>
-    <main>
       <div class="centre">
         <button id="new-recette-btn">🔄 Nouvelle recette</button>
+         <button id="print" type="button" onclick="window.print();">🖨️ Imprimer cette page</button>
+
       </div>
       <div id="recipe-container" class="center">
         <h1 id="recette-title"></h1>
@@ -48,12 +50,13 @@
         <ul id="ingredients-list"></ul>
         <h2>Instructions</h2>
         <p id="instructions"></p>
-
-        <!-- <button id="register">💾 enregistrer la recette</button> -->
-      </div>
+     
+    </div>
     </main>
 
     <script src="js/generer.js"></script>
+
+    
     <footer>
       <hr width="100%" color="orange" />
       <div class="footer-content">
