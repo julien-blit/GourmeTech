@@ -8,21 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Amarante&family=Boldonse&family=Bungee+Tint&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/ajouter.css" />
+    <link rel="stylesheet" href="css/print.css" media="print" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="css/print.css" media="print" />
     <title>GourmeTech</title>
   </head>
   <body>
+    <div id="loader" class="loader" style="display: none;"></div>
     <header id="top">
       <div>
         <nav>
           <div class="logo-title">
-            <div class="logo"><a href="index.html">
-              <span class="letter">G</span>
+            <div class="logo">
+              <a href="index.html"><span class="letter">G</span>
             </div>
             <h1 class="title">GourmeTech</h1></a>
           </div>
           <button class="menu-toggle" id="btn">☰</button>
           <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="recette.html">Recettes</a></li>
             <li><a href="favoris.html">Mes Favoris</a></li>
             <li><a href="generer.html">Recettes Aléatoire</a></li>
             <li><a href="a-propos.html">À Propos</a></li>
@@ -30,7 +34,8 @@
           <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
         </nav>
       </div>
-    </header>   
+    </header>
+
     <div class="general">
     <main>
       <div class="form-container">
@@ -53,19 +58,24 @@
           <label>Instructions:
             <textarea name="instruction" required></textarea>
           </label>
-          <button  class="btn"   type="submit">Enregistrer la recette</button>
+          <button class="btn" type="submit">Enregistrer la recette</button>
         </form>      
     </div>
       <!-- Détails de la recette affichée -->
       <div id="fiche-recette" class="fiche-recette hidden">
         <h1 id="recette-titre">Titre de la recette</h1>
-        <div class="recette-header">
+        <div class="partage-buttons">
+          <button class="btn" onclick="copierRecette()">Copier la recette</button>
+          <button class="btn" onclick="telechargerPDF()">Télécharger au format PDF</button>
+          <button class="btn" onclick="imprimerRecette()">Imprimer la recette</button>
+        </div>
+        <div class="recette-header">          
           <img id="recette-image" src="" alt="Image recette" class="recette-img" />
           <div class="infos-recette">
             <p id="recette-categorie"></p>
             <p id="recette-temps"></p>
             <p id="recette-difficulte"></p>
-          </div>
+          </div>         
         </div>
         <section>
           <h2>Ingrédients</h2>
@@ -82,184 +92,7 @@
     
   </main>
 </div>
-    <script>
-      document.getElementById("form-recette").addEventListener("submit", function (e) {
-          e.preventDefault();
-          const form = e.target;
-          const recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-          const editId = form["edit-id"] ? form["edit-id"].value : null;
-          let imageData = "";
-
-          const imageInput = form.image;
-
-          if (imageInput.files && imageInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (evt) {
-              imageData = evt.target.result;
-              enregistrerRecette(recettes, form, imageData, editId);
-            };
-            reader.readAsDataURL(imageInput.files[0]);
-          } else {
-            enregistrerRecette(recettes, form, form.image.value, editId);
-          }
-        });
-
-      function enregistrerRecette(recettes, form, image, editId) {
-        const nouvelleRecette = {
-          id: editId ? Number(editId) : Date.now(),
-          titre: form.titre.value,
-          temps: form.temps.value,
-          categorie: form.categorie.value,
-          difficulte: form.difficulte.value,
-          image: image,
-          ingredients: form.ingredient.value.split("\n"),
-          instructions: form.instruction.value.split("\n"),
-          favori: false,
-        };
-
-        let nouvellesRecettes;
-        if (editId) {
-          nouvellesRecettes = recettes.map((r) =>
-            r.id == editId ? nouvelleRecette : r
-          );
-        } else {
-          nouvellesRecettes = [...recettes, nouvelleRecette];
-        }
-
-        localStorage.setItem("recettesUser", JSON.stringify(nouvellesRecettes));
-        form.reset();
-        const idField = form.querySelector('input[name="edit-id"]');
-        if (idField) idField.remove();
-
-        afficherRecettes();
-      }
-
-      function afficherRecettes(filtre = "toutes") {
-        const recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-        const container = document.getElementById("liste-recettes");
-        container.innerHTML = "";
-
-        let recettesFiltrees = [...recettes].reverse(); // Inverser l’ordre
-
-        if (filtre === "favoris") {
-          recettesFiltrees = recettesFiltrees.filter((r) => r.favori);
-        }
-
-        if (recettesFiltrees.length === 0) {
-          container.innerHTML = "<p>Aucune recette.</p>";
-          return;
-        }
-
-        recettesFiltrees.forEach((recette) => {
-          const div = document.createElement("div");
-          div.className = "card";
-
-          div.innerHTML = `
-            <div class="img-container">
-              <img class="card-img" src="${recette.image}" alt="${recette.titre}">
-              <span class="coeur-favori" onclick="toggleFavori(${recette.id})">
-                  ${recette.favori ? "❤️" : "🤍"}
-              </span>
-            </div>
-            <div class="card-body">
-              <h3>${recette.titre}</h3>
-              <span class="tag orange">${recette.categorie}</span>
-              <span class="tag green">${recette.temps}</span>
-              <span class="tag blue">${recette.difficulte}</span> 
-              <button class="btn-orange" onclick="voirRecette(${recette.id})">Voir la recette</button>   
-            </div>`;
-
-          container.appendChild(div);
-        });
-        
-      }
-
-      function voirRecette(id) {
-        const recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-        const recette = recettes.find((r) => r.id === id);
-        if (!recette) return;
-
-        const fiche = document.getElementById("fiche-recette");
-
-        // Réinitialiser et afficher le contenu
-        fiche.classList.remove("hidden"); // Enlever la classe 'hidden' pour afficher la fiche
-
-        document.getElementById("recette-titre").textContent = recette.titre;
-        document.getElementById("recette-image").src = recette.image;
-        document.getElementById("recette-categorie").textContent =  recette.categorie;
-        document.getElementById("recette-temps").textContent = ` ${recette.temps}`;
-        document.getElementById("recette-difficulte").textContent = ` ${recette.difficulte}`;
-
-        const ul = document.getElementById("liste-ingredients");
-        const ol = document.getElementById("liste-instructions");
-        ul.innerHTML = "";
-        ol.innerHTML = "";
-
-        recette.ingredients.forEach((ing) => {
-          const li = document.createElement("li");
-          li.textContent = ing;
-          ul.appendChild(li);
-        });
-
-        recette.instructions.forEach((ins) => {
-          const li = document.createElement("li");
-          li.textContent = ins;
-          ol.appendChild(li);
-        });
-
-        // Scroll vers la fiche recette
-        fiche.scrollIntoView({ behavior: "smooth" });
-      }
-
-      function modifierRecette(id) {
-        const recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-        const recette = recettes.find((r) => r.id === id);
-        if (!recette) return;
-
-        const form = document.getElementById("form-recette");
-        form.titre.value = recette.titre;
-        form.categorie.value = recette.categorie;
-        form.temps.value = recette.temps;
-        form.difficulte.value = recette.difficulte;
-        form.ingredient.value = recette.ingredients.join("\n");
-        form.instruction.value = recette.instructions.join("\n");
-
-        // Ajouter un champ caché pour stocker l'ID
-        let idField = document.querySelector('input[name="edit-id"]');
-        if (!idField) {
-          idField = document.createElement("input");
-          idField.type = "hidden";
-          idField.name = "edit-id";
-          form.appendChild(idField);
-        }
-        idField.value = id;
-
-        form.scrollIntoView({ behavior: "smooth" });
-      }
-
-      function supprimerRecette(id) {
-        let recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-        recettes = recettes.filter((r) => r.id !== id);
-        localStorage.setItem("recettesUser", JSON.stringify(recettes));
-        afficherRecettes();
-      }
-
-      function toggleFavori(id) {
-        let recettes = JSON.parse(localStorage.getItem("recettesUser")) || [];
-        recettes = recettes.map((r) =>
-          r.id === id ? { ...r, favori: !r.favori } : r
-        );
-        localStorage.setItem("recettesUser", JSON.stringify(recettes));
-        afficherRecettes();
-      }
-
-      function filtrer(type) {
-        afficherRecettes(type);
-      }
-
-      document.addEventListener("DOMContentLoaded", () => afficherRecettes());
-      
-    </script>
+    <script src="js/ajouter-recette.js"></script>
     <script src="js/script.js"></script>
     <footer>
       <hr width="100%" color="orange" />
@@ -269,7 +102,7 @@
             <h2>Navigation</h2>
             <ul>
               <!-- <li><a href="#top">Accueil</a></li> -->
-              <li><a href="index.html">Accueil</a></li>
+              <li><a href="ajouter-recettes.html">Ajouter une recette</a></li>
               <li><a href="favoris.html">Mes favoris</a></li>
               <li><a href="generer.html">Recettes Aléatoire</a></li>
               <li><a href="a-propos.html">À Propos</a></li>
@@ -277,7 +110,9 @@
           </div>
           <div class="footer-column">
             <h2>À propos de GourmeTech</h2>
-            <h3>GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d'un projet pédagogique.
+            <h3>
+              GourmeTech est une plateforme de recettes culinaires<br />interactive
+              développée dans le cadre d'un projet pédagogique.
             </h3>
           </div>
         </div>

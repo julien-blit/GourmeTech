@@ -1,0 +1,66 @@
+@media print {
+    body * {
+      visibility: hidden;
+    }
+  
+    #recipe-details, #recipe-details * {
+      visibility: visible;
+    }
+  
+    #recipe-details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      color: black;
+      padding: 20px;
+    }
+  
+    #recipe-details button {
+      display: none; /* Ne pas afficher les boutons "Fermer" ou autres */
+    }
+  
+    header, footer, .nav-links, .search-container, .filter-container, .cards-container, .menu-toggle, .dark-toggle {
+      display: none !important;
+    }
+  }
+
+  /* partager la recette */
+  
+  .partage-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    display: none;
+  }
+  
+  .partage-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .partage-buttons button:hover {
+    background-color: #e69500;
+  }
+  
+  body * {
+    visibility: hidden;
+  }
+  
+  #fiche-recette, #fiche-recette * {
+    visibility: visible;
+  }
+  
+  #fiche-recette {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+ 
