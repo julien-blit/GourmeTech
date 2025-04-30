@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
           heart.textContent = "🤍"; // Coeur vide si recette n'est pas favorite
         }
       });
-  };
- 
+    };
+  
     // Sauvegarder les favoris dans le localStorage
     const saveFavorites = (favorites) => {
       localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -146,11 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFavorites();
     showLoader(); // Affiche le loader
   
-  setTimeout(() => {
-    renderFavorites(); // Simule un délai pour le chargement
-    hideLoader(); // Cache le loader une fois terminé
-  }, 1000); // Simule un délai de chargement (1 seconde)
-  });
+    setTimeout(() => {
+      renderFavorites(); // Simule un délai pour le chargement
+      hideLoader(); // Cache le loader une fois terminé
+    }, 1000); // Simule un délai de chargement (1 seconde)
+ });
   
   // Fonction pour afficher les détails de la recette dans un div
   function showRecipeDetails(recipe) {
