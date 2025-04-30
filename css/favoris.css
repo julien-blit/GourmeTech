@@ -299,3 +299,25 @@ h4 {
     font-size: 0.9rem;
   }
 }
+
+#recipe-details.reading-mode {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  background-color: #fefefe;
+  color: #333;
+  padding: 3rem 5rem;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#recipe-details.reading-mode img {
+  max-width: 100%;
+  margin: 2rem 0;
+}
+
+#recipe-details.reading-mode h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
