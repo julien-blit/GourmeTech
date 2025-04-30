@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (e) {
     console.error("Erreur chargement recettes :", e);
   }
-
   document.getElementById("champ-recherche").addEventListener("input", filtrerRecettes);
   document.querySelector(".search-button").addEventListener("click", filtrerRecettes);
 });
@@ -21,9 +20,7 @@ function chargerListeRecettes(recettesFiltrees = recettes) {
   if (recettesFiltrees.length === 0) {
     container.innerHTML = "<p>Aucune recette trouvée.</p>";
   }
-
   container.classList.remove("hidden");
-
   recettesFiltrees.forEach(r => {
     container.innerHTML += `
       <div class="card">
@@ -71,10 +68,8 @@ function afficherDetail(id) {
 function fermerModal(event) {
   if (event) event.preventDefault();
   console.log("Modal fermé");
-
   // Masquer le modal
   document.getElementById("modal-detail-recette").style.display = "none";
-
   // Réafficher la liste des recettes avec sa classe d'origine
   document.getElementById("liste-recettes").classList.remove("hidden");
 }
