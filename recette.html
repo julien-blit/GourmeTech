@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=0.6" />
-  <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/favoris.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/favoris.css">
   <title>GourmeTech</title>
 </head>
 <body>
@@ -24,30 +24,27 @@
       <button class="dark-toggle" id="dark-mode-toggle">🌙</button>
     </nav>
   </header>
-
   <section>
     <div class="search-container">
-      <input type="text" id="champ-recherche" placeholder="Rechercher une recette..." class="search-input" />
+      <input type="text" id="champ-recherche" placeholder="Rechercher une recette..." class="search-input" >
       <button class="search-button">Rechercher</button>
     </div>
     <div class="no-result" style="display: none; text-align: center; margin-top: 2rem">
       <p>Aucune recette trouvée 😢</p>
     </div>
   </section>
-
   <main class="main-content">
     <div class="general">
       <div class="content-center">
         <!-- Liste des recettes -->
         <div id="liste-recettes" class="row"></div>
-
         <!-- Modal pour les détails de la recette -->
         <div id="modal-detail-recette" class="modal">
           <div class="modal-content">
             <span class="close" onclick="fermerModal()">&times;</span>
             <h1 id="recette-titre"></h1>
             <div class="recette-header" style="position: relative">
-              <img id="recette-image" src="" alt="Image recette" class="recette-img" />
+              <img id="recette-image" src="" alt="Image recette" class="recette-img">
               <div class="infos-recette">
                 <p id="recette-categorie"></p>
                 <p id="recette-temps"></p>
@@ -67,12 +64,10 @@
       </div>
     </div>
   </main>
-
   <script src="js/recette.js"></script>
   <script src="js/script.js"></script>
-
   <footer>
-    <hr width="100%" color="orange" />
+    <hr width="100%" color="orange" >
     <div class="footer-content">
       <div class="aside">
         <div class="footer-column">
